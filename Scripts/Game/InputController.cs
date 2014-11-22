@@ -63,14 +63,30 @@ public class InputController : MonoBehaviour {
         if (Input.GetButtonDown("Head"))
         {
             if (_monsterCollision)
-            {
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
-            }
+            //if (_scientistCollision)
+            //    _playerAction.
         }
-        if (Input.GetButtonDown("LeftArm")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("RightArm")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("LeftLeg")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("RightLeg")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("LeftArm"))
+        {
+            if (_monsterCollision)
+                _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmPrefab);
+        }
+        if (Input.GetButtonDown("RightArm"))
+        {
+            if (_monsterCollision)
+                _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmPrefab);
+        }
+        if (Input.GetButtonDown("LeftLeg"))
+        {
+            if (_monsterCollision)
+                _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegPrefab);
+        }
+        if (Input.GetButtonDown("RightLeg"))
+        {
+            if (_monsterCollision)
+                _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegPrefab);
+        }
     }
 
 	// Update is called once per frame
