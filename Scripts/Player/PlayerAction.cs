@@ -23,6 +23,7 @@ public class PlayerAction : MonoBehaviour
 
     public void AddMember(Membre membre, GameObject prefab)
     {
+        Debug.Log(membre);
         switch (membre)
         {
             case Membre.Tete:
@@ -31,6 +32,7 @@ public class PlayerAction : MonoBehaviour
             case Membre.BrasDroit:
                 BrasDroit = prefab;
                 break;
+
             case Membre.BrasGauche:
                 BrasGauche = prefab;
                 break;
