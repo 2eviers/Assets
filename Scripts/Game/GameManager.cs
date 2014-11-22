@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Vector3 _spawn1 { get; set; }
     public Vector3 _spawn2 { get; set; }
     public Vector3 _spawn3 { get; set; }
+    public int Speed;
 
 	// Update is called once per frame
 	void Update () {

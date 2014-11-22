@@ -10,8 +10,9 @@ public abstract class Ennemy : MonoBehaviour {
 	private GameObject ArmPrefab;
 	private GameObject LegPrefab;
 
-	void Start () {
-	
+	void Start ()
+	{
+	   
 	}
 
 	void Motion() {
