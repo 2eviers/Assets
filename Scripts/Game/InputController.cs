@@ -54,7 +54,10 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
-        if (Input.GetButtonDown("Head")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("Head"))
+        {
+            //throw new Exception("not implemented");
+        }
         if (Input.GetButtonDown("LeftArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("RightArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("LeftLeg")) { throw new Exception("not implemented"); }
