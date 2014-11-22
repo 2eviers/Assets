@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Poulpe : Ennemy {
+public class Poulet : Ennemy {
 
 	// Use this for initialization
 	void Start () {
 		IsHiddenScientist = false;
 	}
-	
 
 }
