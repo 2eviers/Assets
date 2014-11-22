@@ -41,11 +41,6 @@ public class MenuScript : MonoBehaviour {
     } 
 	// Update is called once per frame
 	void Update () {
-        //if(Input.GetKeyDown(KeyCode.I))
-        //{
-        //    Debug.Log("beat");
-        //}
-        //Debug.Log(_delay);
         if(_delay == 270)
             Debug.Log("1");
         if (_delay == 220)
