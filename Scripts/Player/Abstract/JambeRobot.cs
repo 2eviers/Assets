@@ -2,7 +2,7 @@
 using System.Collections;
 using AssemblyCSharp;
 
-public class JambeDragon : Jambe {
+public class JambeRobot : Jambe {
 	
 	void Start() {
 		SpeedBonus = 5f;
