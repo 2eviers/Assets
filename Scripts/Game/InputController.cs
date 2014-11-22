@@ -33,7 +33,7 @@ public class InputController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (_test/*other.gameObject.GetComponent<EnemyBehaviour>()*/)
+        if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
             _scientistCollision = true;
         else _monsterCollision = true;
     }
@@ -46,10 +46,10 @@ public class InputController : MonoBehaviour {
 	
     void Controller()
     {
-        if (Input.GetButtonDown("Up")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("Down")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("Up")) { _playerMotion.MoveUp(); }
+        if (Input.GetButtonDown("Down")) { _playerMotion.MoveDown(); }
         if (Input.GetButtonDown("Action")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("Jump")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("Jump")) { _playerMotion.Jump(); }
     }
 
     void OrgansController()
@@ -64,5 +64,6 @@ public class InputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    Controller();
+        OrgansController();
 	}
 }

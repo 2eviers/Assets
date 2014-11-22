@@ -6,7 +6,7 @@ public abstract class Ennemy : MonoBehaviour {
 
 	public float Speed;
 	public float Plane;
-	protected bool _isHiddenScientist;
+    public bool IsHiddenScientist { get; protected set; }
 	private GameObject HeadPrefab;
 	private GameObject ArmPrefab;
 	private GameObject LegPrefab;
