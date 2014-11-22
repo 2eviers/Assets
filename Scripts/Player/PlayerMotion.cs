@@ -53,7 +53,7 @@ public class PlayerMotion : MonoBehaviour
 
     IEnumerator J()
     {
-		Vector3 PlayerPosition = GameObject.Find ("Joueur").transform.position;
+		Vector3 PlayerPosition = GameObject.Find ("Player").transform.position;
 		_target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
 		_target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
