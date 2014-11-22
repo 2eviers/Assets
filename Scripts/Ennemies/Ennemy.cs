@@ -7,9 +7,11 @@ public abstract class Ennemy : MonoBehaviour {
     public bool IsHiddenScientist { get; protected set; }
 	private float _speed;
 	private ScrollingScript _scrollingScript;
-    public GameObject HeadPrefab { get; private set; }
-    public GameObject ArmPrefab { get; private set; }
-    public GameObject LegPrefab { get; private set; }
+    public GameObject HeadPrefab;
+    public GameObject ArmRightPrefab;
+    public GameObject ArmLeftPrefab;
+    public GameObject LegRightPrefab;
+    public GameObject LegLeftPrefab;
 
 	void Start () {
 

@@ -60,28 +60,28 @@ public class InputController : MonoBehaviour {
         if (Input.GetButtonDown("LeftArm"))
         {
             if (_monsterCollision)
-                _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmPrefab);
+                _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmLeftPrefab);
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightArm"))
         {
             if (_monsterCollision)
-                _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmPrefab);
+                _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmRightPrefab);
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("LeftLeg"))
         {
             if (_monsterCollision)
-                _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegPrefab);
+                _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegLeftPrefab);
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightLeg"))
         {
             if (_monsterCollision)
-                _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegPrefab);
+                _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegRightPrefab);
             if (_scientistCollision)
                 _playerAction.Arracher();
         }

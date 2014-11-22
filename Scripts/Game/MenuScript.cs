@@ -58,7 +58,6 @@ public class MenuScript : MonoBehaviour {
         }
         if (_delay == 270)
         {
-            Debug.Log("1");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -66,7 +65,6 @@ public class MenuScript : MonoBehaviour {
 
         if (_delay == 220)
         {
-            Debug.Log("2");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -74,7 +72,6 @@ public class MenuScript : MonoBehaviour {
             
         if (_delay == 140)
         {
-            Debug.Log("3");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -82,7 +79,6 @@ public class MenuScript : MonoBehaviour {
 
         if (_delay == 107)
         {
-            Debug.Log("4");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -90,7 +86,6 @@ public class MenuScript : MonoBehaviour {
 
         if (_delay == 75)
         {
-            Debug.Log("5");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -98,7 +93,6 @@ public class MenuScript : MonoBehaviour {
 
         if (_delay == 37)
         {
-            Debug.Log("6");
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
