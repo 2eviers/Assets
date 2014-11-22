@@ -11,6 +11,9 @@ public class PlayerAction : MonoBehaviour
     public GameObject JambeDroite;
     public GameObject JambeGauche;
 
+    public float position1;
+    public float position2;
+
     public enum Membre
     {
         Tete,BrasDroit,BrasGauche,JambeGauche,JambeDroite
@@ -42,6 +45,13 @@ public class PlayerAction : MonoBehaviour
      */
     public void Arracher()
     {
+        killRandomMember();
+        recul();
+    }
+
+    private void killRandomMember()
+    {
+
         GameObject membre = null;
 
         while (membre == null)
@@ -65,7 +75,14 @@ public class PlayerAction : MonoBehaviour
                     break;
             }
         }
+
         membre.GetComponent<AssemblyCSharp.Membre>().Detruire();
+    }
+
+
+    private void recul()
+    {
+        
     }
 
     public bool IsDead()
@@ -93,8 +110,6 @@ public class PlayerAction : MonoBehaviour
                     BrasGauche.GetComponent<AssemblyCSharp.Membre>().Rejet)
                 ? BrasDroit
                 : BrasGauche;
-
-
 
         return bras.GetComponent<Bras>().UseShield(); 
     }
