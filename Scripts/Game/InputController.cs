@@ -42,7 +42,7 @@ public class InputController : MonoBehaviour {
 	
     void Controller()
     {
-        if (Input.GetButtonDown("Up")) { _playerMotion.MoveUp(); }
+        if (Input.GetButtonDown("Up")){_playerMotion.MoveUp();}
         if (Input.GetButtonDown("Down")) { _playerMotion.MoveDown(); }
         if (Input.GetButtonDown("Action")) { _playerAction.UseCompetence(); }
         if (Input.GetButtonDown("Jump")) { _playerMotion.Jump(); }

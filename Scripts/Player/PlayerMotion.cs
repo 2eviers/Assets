@@ -15,6 +15,8 @@ public class PlayerMotion : MonoBehaviour
 
     private void move()
     {
+        Debug.Log(_target);
+
         if (_target == null) return;
 
         var target = (Vector3) _target;
@@ -59,6 +61,12 @@ public class PlayerMotion : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+    }
+
+	// Update is called once per frame
+	void Update () {
+
         _line1 = Camera.main.GetComponent<GameManager>()._spawn1;
         _line2 = Camera.main.GetComponent<GameManager>()._spawn2;
         _line3 = Camera.main.GetComponent<GameManager>()._spawn3;
@@ -67,10 +75,6 @@ public class PlayerMotion : MonoBehaviour
         _line2.x = _line1.x;
         _line3.x = _line1.x;
 
-    }
-
-	// Update is called once per frame
-	void Update () {
 	    move();
 	}
 }
