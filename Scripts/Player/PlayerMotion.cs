@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerMotion : MonoBehaviour
 {
@@ -53,9 +54,26 @@ public class PlayerMotion : MonoBehaviour
 
     IEnumerator J()
     {
-		Vector3 PlayerPosition = GameObject.Find ("Player").transform.position;
+		Vector3 PlayerPosition = this.gameObject.transform.position;
 		_target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
+		bool CanFly = false;
+		float duration = 0;
+		//si on a deux ailes de poulet on plane plus longtemps
+		try {
+			Aile aile = this.gameObject.GetComponent<PlayerAction>().BrasDroit.GetComponent<Aile>();
+			Aile aile2 = this.gameObject.GetComponent<PlayerAction>().BrasGauche.GetComponent<Aile>();
+			CanFly = true;
+			duration = aile.FlightDuration;
+			duration = aile2.FlightDuration;
+		}
+		catch (NullReferenceException e) {
+			String b = e.Message;
+			CanFly = false;
+		}
+		CanFly = true;
+		if (CanFly)
+			yield return new WaitForSeconds(duration);
 		_target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
     }
