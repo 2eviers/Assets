@@ -5,11 +5,11 @@ using AssemblyCSharp;
 public class TeteAlien : Tete {
 	
 	void Start() {
-		Cooldown = 0;
-		Charge = 0;
+		Cooldown = 5f;
+		Charge = 3;
 	}
 	
 	protected override void ActiveCompetence() {
-		return;
+		//permet de reveler les scientifiques caches
 	}
 }
