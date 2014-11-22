@@ -5,18 +5,18 @@ using System.Collections;
 public class PlayerAction : MonoBehaviour
 {
 
-    public GameManager Tete;
-    public GameManager BrasDroit;
-    public GameManager BrasGauche;
-    public GameManager JambeDroite;
-    public GameManager JambeGauche;
+    public GameObject Tete;
+    public GameObject BrasDroit;
+    public GameObject BrasGauche;
+    public GameObject JambeDroite;
+    public GameObject JambeGauche;
 
     public enum Membre
     {
         Tete,BrasDroit,BrasGauche,JambeGauche,JambeDroite
     }
 
-    public void AddMember(Membre membre, GameManager prefab)
+    public void AddMember(Membre membre, GameObject prefab)
     {
         switch (membre)
         {
