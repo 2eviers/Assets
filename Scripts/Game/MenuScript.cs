@@ -5,7 +5,7 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _delay = 500;
+        _delay = 400;
 	    _activeDelay = false;
 	}
 
