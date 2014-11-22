@@ -20,14 +20,21 @@ public class GameManager : MonoBehaviour {
         _spawn3 = new Vector3(_spawnX, -3, -3);
 		Speed = 10;
 	    //_playerAction = _player.GetComponent<PlayerAction>();
+	    //Time.timeScale = 0;
+        Debug.Log(Time.timeScale);
 	}
 
     [SerializeField] private GameObject _player;
     private PlayerAction _playerAction;
 
+    void Begin()
+    {
+        Time.timeScale = 1;
+    }
+
     //void Loose()
     //{
-    //    if(_playerAction.IsDead())
+    //    if (_playerAction.IsDead())
     //        Time.timeScale = 0;
     //}
 
