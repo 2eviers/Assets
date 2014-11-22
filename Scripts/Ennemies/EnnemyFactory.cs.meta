@@ -6,6 +6,8 @@ MonoImporter:
   - PoulpePrefab: {fileID: 100000, guid: a9a03faefe4dc5b4e9a135878dda79fa, type: 2}
   - PouletPrefab: {fileID: 100000, guid: 782714a05349b6249b9e3e80f237e9d6, type: 2}
   - DragonPrefab: {fileID: 100000, guid: 2e250bd4c6586324d965ca8643023fd5, type: 2}
+  - RobotPrefab: {fileID: 100000, guid: 8df7d4625bee96a46811b271cbd91426, type: 2}
+  - AlienPrefab: {fileID: 100000, guid: 110d8704412cbd94ca8c2a100bcbd34e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
