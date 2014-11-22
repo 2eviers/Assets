@@ -29,10 +29,10 @@ public class PlayerAction : MonoBehaviour
 
                 break;
             case Membre.BrasDroit:
-
+                BrasDroit = prefab;
                 break;
             case Membre.BrasGauche:
-
+                BrasGauche = prefab;
                 break;
             case Membre.JambeDroite:
 
