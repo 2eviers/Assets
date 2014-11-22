@@ -24,7 +24,7 @@ public abstract class Ennemy : MonoBehaviour {
 		    	&& transform.position.x < 10f 
 		    	&& this.gameObject.audio != null) 
 			this.gameObject.audio.Play ();
-		if (transform.position.x < -10)
+        if (transform.position.x < -Camera.main.orthographicSize * Camera.main.aspect - 2)
 			Die ();
 	}
 
