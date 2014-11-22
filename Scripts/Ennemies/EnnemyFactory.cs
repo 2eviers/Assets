@@ -11,15 +11,14 @@ public class EnnemyFactory : MonoBehaviour {
 	public float TrashProbability = 0.1f;
 	public float SpawnSpeed;
 	private int CurrentTime;
-    private Vector3 _spawn;
-    private GameManager _gameManager;
+	public float SpawnX = 10;
+	public float SpawnZ = -1;
 	private ArrayList Probabilities;
 	public GameObject PoulpePrefab;
 	public GameObject PouletPrefab;
 
 	void Start() {
 	// 	Probabilities.Add ();
-	    _gameManager = GetComponent<GameManager>();
 	}
 
 	GameObject Spawn() {
@@ -36,14 +35,11 @@ public class EnnemyFactory : MonoBehaviour {
 		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
 		int p = (int)Random.Range (0, 3);
-        if (p == 0)
-            _spawn = _gameManager._spawn1;
-        if (p == 1)
-            _spawn = _gameManager._spawn2;
-        if (p == 2)
-            _spawn = _gameManager._spawn3;
-
-	    _ennemy.transform.position = _spawn;
+		float Plane = (float) (- 1.5 * p);
+		//all ennemies start at the same (x,z) coordinates but not in the same plane
+		Vector3 Position = new Vector3 (SpawnX, Plane, SpawnZ);
+		_ennemy.transform.position = Position;
+//		_ennemy.GetComponent<Ennemy>().Plane = Plane;
 
 		return _ennemy;
 	}
