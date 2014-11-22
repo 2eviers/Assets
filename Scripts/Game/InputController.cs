@@ -10,11 +10,6 @@ public class InputController : MonoBehaviour {
 	{
 	    _playerMotion = GetComponent<PlayerMotion>();
 	    _playerAction = GetComponent<PlayerAction>();
-        _tete = GetComponent<Tete>();
-        _jambeGauche = GetComponent<Jambe>();
-        _jambeDroite = GetComponent<Jambe>();
-        _brasDroit = GetComponent<Bras>();
-        _brasGauche = GetComponent<Bras>();
 
 	    _monsterCollision = false;
 	    _scientistCollision = false;
@@ -22,11 +17,6 @@ public class InputController : MonoBehaviour {
 
     private PlayerMotion _playerMotion;
     private PlayerAction _playerAction;
-    private Tete _tete;
-    private Jambe _jambeGauche;
-    private Jambe _jambeDroite;
-    private Bras _brasDroit;
-    private Bras _brasGauche;
 
     private bool _monsterCollision;
     private bool _scientistCollision;
@@ -64,28 +54,36 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
-            //if (_scientistCollision)
-            //    _playerAction.
+            if (_scientistCollision)
+                _playerAction.Arracher();
         }
         if (Input.GetButtonDown("LeftArm"))
         {
             if (_monsterCollision)
                 _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmPrefab);
+            if (_scientistCollision)
+                _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightArm"))
         {
             if (_monsterCollision)
                 _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmPrefab);
+            if (_scientistCollision)
+                _playerAction.Arracher();
         }
         if (Input.GetButtonDown("LeftLeg"))
         {
             if (_monsterCollision)
                 _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegPrefab);
+            if (_scientistCollision)
+                _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightLeg"))
         {
             if (_monsterCollision)
                 _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegPrefab);
+            if (_scientistCollision)
+                _playerAction.Arracher();
         }
     }
 
