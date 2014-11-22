@@ -20,6 +20,10 @@ public abstract class Ennemy : MonoBehaviour {
 		//move along the x axis
 		_speed = Camera.main.GetComponent<GameManager> ().Speed;
 		this.transform.Translate (Time.deltaTime * new Vector3 (- _speed, 0, 0));
+		if (transform.position.x > 9f 
+		    	&& transform.position.x < 10f 
+		    	&& this.gameObject.audio != null) 
+			this.gameObject.audio.Play ();
 		if (transform.position.x < -10)
 			Die ();
 	}
