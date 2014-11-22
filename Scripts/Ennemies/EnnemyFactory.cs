@@ -18,7 +18,6 @@ public class EnnemyFactory : MonoBehaviour {
 
 	void Start() {
 	// 	Probabilities.Add ();
-		Debug.Log ("oki");
 	}
 
 	GameObject Spawn() {
