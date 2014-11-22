@@ -16,7 +16,7 @@ namespace AssemblyCSharp
             Player.GetComponent<PlayerMotion>().Speed += SpeedBonus;
         }
 
-        protected override void Detruire()
+        public override void Detruire()
         {
             Player.GetComponent<PlayerMotion>().Speed -= SpeedBonus;
             base.Detruire();

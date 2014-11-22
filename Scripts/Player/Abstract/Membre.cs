@@ -18,7 +18,7 @@ namespace AssemblyCSharp
         }
 
 
-        protected void Tombe()
+        private void Tombe()
         {
             //si le membre n'est pas mort il ne se passe rien
             if (!IsDead())
@@ -32,7 +32,10 @@ namespace AssemblyCSharp
             Detruire();
         }
 
-        protected virtual void Detruire(){}
+        public virtual void Detruire()
+        {
+            Destroy(gameObject);
+        }
 
         void Update()
         {

@@ -37,11 +37,40 @@ public class PlayerAction : MonoBehaviour
                 break;
         }
     }
-
+    /**
+     * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
+     */
     public void Arracher()
     {
-        int rand = Random.Range(0, 4);
+        GameObject membre = null;
 
+        while (membre == null)
+        {
+            switch (Random.Range(0, 4))
+            {
+                case 0:
+                    membre = Tete;
+                    break;
+                case 1:
+                    membre = BrasDroit;
+                    break;
+                case 2:
+                    membre = BrasGauche;
+                    break;
+                case 3:
+                    membre = JambeDroite;
+                    break;
+                case 4:
+                    membre = JambeGauche;
+                    break;
+            }
+        }
+        membre.GetComponent<AssemblyCSharp.Membre>().Detruire();
+    }
+
+    public bool IsDead()
+    {
+        return (JambeDroite == null && JambeGauche == null);
     }
 
     public void UseCompetence()
