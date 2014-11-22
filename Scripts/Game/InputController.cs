@@ -62,10 +62,10 @@ public class InputController : MonoBehaviour {
     {
         if (Input.GetButtonDown("Head"))
         {
-            //if (_monsterCollision)
-            //{
-            //    _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.);
-            //}
+            if (_monsterCollision)
+            {
+                _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
+            }
         }
         if (Input.GetButtonDown("LeftArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("RightArm")) { throw new Exception("not implemented"); }
