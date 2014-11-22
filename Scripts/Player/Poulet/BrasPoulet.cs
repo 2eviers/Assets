@@ -2,7 +2,7 @@
 using System.Collections;
 using AssemblyCSharp;
 
-public class Aile : Bras {
+public class BrasPoulet : Bras {
 
 	void Start() {
 		Charge = 0;
