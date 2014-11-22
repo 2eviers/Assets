@@ -11,7 +11,28 @@ public class PlayerMotion : MonoBehaviour
 	void Start () {
 	
 	}
-	
+
+    private void move()
+    {
+        
+
+    }
+
+    public void MoveUp()
+    {
+        
+    }
+
+    public void MoveDown()
+    {
+        
+    }
+
+    public void Jump()
+    {
+        
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
