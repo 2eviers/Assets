@@ -38,6 +38,12 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
+    public void Arracher()
+    {
+        int rand = Random.Range(0, 4);
+
+    }
+
     public void UseCompetence()
     {
 
