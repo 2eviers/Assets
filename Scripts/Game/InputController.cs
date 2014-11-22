@@ -14,6 +14,9 @@ public class InputController : MonoBehaviour {
         _jambeDroite = GetComponent<Jambe>();
         _brasDroit = GetComponent<Bras>();
         _brasGauche = GetComponent<Bras>();
+
+	    _monsterCollision = false;
+	    _scientistCollision = false;
 	}
 
     private PlayerMotion _playerMotion;
@@ -22,22 +25,40 @@ public class InputController : MonoBehaviour {
     private Jambe _jambeDroite;
     private Bras _brasDroit;
     private Bras _brasGauche;
+
+    private bool _monsterCollision;
+    private bool _scientistCollision;
+
+    private bool _test;
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (_test/*other.gameObject.GetComponent<EnemyBehaviour>()*/)
+            _scientistCollision = true;
+        else _monsterCollision = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        _scientistCollision = false;
+        _monsterCollision = false;
+    }
 	
     void Controller()
     {
-        if (Input.GetButtonDown("Up"))
-        {
-            throw new Exception("not implemented");
-        }
+        if (Input.GetButtonDown("Up")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("Down")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("Action")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("Jump")) { throw new Exception("not implemented"); }
-        if (Input.GetButtonDown("Head")) { throw new Exception("not implemented");}
+    }
+
+    void OrgansController()
+    {
+        if (Input.GetButtonDown("Head")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("LeftArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("RightArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("LeftLeg")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("RightLeg")) { throw new Exception("not implemented"); }
-            
     }
 
 	// Update is called once per frame
