@@ -40,7 +40,7 @@ public class PlayerAction : MonoBehaviour
 
     public void UseCompetence()
     {
-        Bras bras;
+
     }
 
     public bool UseShield()
