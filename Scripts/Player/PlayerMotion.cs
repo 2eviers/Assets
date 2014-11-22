@@ -51,10 +51,19 @@ public class PlayerMotion : MonoBehaviour
         _target = (_line2.z < target.z) ? _line2 : _line3;
     }
 
-    public void Jump()
+    IEnumerator J()
     {
-        
+		Vector3 PlayerPosition = GameObject.Find ("Joueur").transform.position;
+		_target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
+		yield return new WaitForSeconds (0.25f);
+		_target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
+		yield return new WaitForSeconds (0.25f);
     }
+
+	public void Jump() 
+	{
+		StartCoroutine (J ());
+	}
 
     // Use this for initialization
     void Start()
