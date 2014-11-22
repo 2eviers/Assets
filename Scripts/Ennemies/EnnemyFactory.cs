@@ -15,6 +15,7 @@ public class EnnemyFactory : MonoBehaviour {
 	public float SpawnZ = -1;
 	private ArrayList Probabilities;
 	public GameObject PoulpePrefab;
+	public GameObject PouletPrefab;
 
 	void Start() {
 	// 	Probabilities.Add ();
@@ -22,8 +23,16 @@ public class EnnemyFactory : MonoBehaviour {
 
 	GameObject Spawn() {
 	//randomly spawns an ennemy
-		//GameObject Ennemy = (GameObject) Instantiate (Resources.Load("Poulpe"));
-		GameObject _ennemy = (GameObject) Instantiate (PoulpePrefab);
+		int r = Random.Range (0, 100);
+		Debug.Log (r);
+		GameObject _ennemy;
+		GameObject _prefab;
+		if (r < 10)
+			_prefab = PoulpePrefab;
+		else
+			_prefab = PouletPrefab; 
+
+		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
 		int p = (int)Random.Range (0, 3);
 		float Plane = (float) (- 1.5 * p);
