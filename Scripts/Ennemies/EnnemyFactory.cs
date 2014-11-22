@@ -15,6 +15,8 @@ public class EnnemyFactory : MonoBehaviour {
 	public GameObject PoulpePrefab;
 	public GameObject PouletPrefab;
 	public GameObject DragonPrefab;
+	public GameObject RobotPrefab;
+	public GameObject AlienPrefab;
 	private int CurrentTime;
 	private Vector3 _spawn;
 	private GameManager _gameManager;
@@ -30,11 +32,15 @@ public class EnnemyFactory : MonoBehaviour {
 		GameObject _ennemy;
 		GameObject _prefab;
 		if (r < 10)
-			_prefab = DragonPrefab;
-		else if (r < 40)
-			_prefab = PouletPrefab;
-		else
-			_prefab = PoulpePrefab;
+						_prefab = DragonPrefab;
+				else if (r < 40)
+						_prefab = PouletPrefab;
+				else if (r < 60)
+						_prefab = PoulpePrefab;
+				else if (r < 80)
+						_prefab = RobotPrefab;
+				else
+						_prefab = AlienPrefab;
 
 		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
