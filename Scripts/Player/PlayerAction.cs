@@ -11,8 +11,10 @@ public class PlayerAction : MonoBehaviour
     public GameObject JambeDroite;
     public GameObject JambeGauche;
 
-    public float position1;
-    public float position2;
+    public float Position1;
+    private float _pos1;
+    public float Position2;
+    private float _pos2;
 
     public enum Membre
     {
@@ -116,8 +118,10 @@ public class PlayerAction : MonoBehaviour
 
 
     // Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+        _pos1 = -Position1 * Camera.main.aspect * Camera.main.orthographicSize;
+        _pos2 = -Position2 * Camera.main.aspect * Camera.main.orthographicSize;
 	}
 	
 	// Update is called once per frame
