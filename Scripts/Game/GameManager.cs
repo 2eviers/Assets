@@ -20,23 +20,21 @@ public class GameManager : MonoBehaviour {
         _spawn3 = new Vector3(_spawnX, -3, -3);
 		Speed = 10;
 	    //_playerAction = _player.GetComponent<PlayerAction>();
-	    //Time.timeScale = 0;
-        Debug.Log(Time.timeScale);
+	    Time.timeScale = 0;
 	}
 
+    [SerializeField] private GameObject _endCanvas;
     [SerializeField] private GameObject _player;
     private PlayerAction _playerAction;
 
-    void Begin()
+    void Loose()
     {
-        Time.timeScale = 1;
+        if (Input.GetKeyDown(KeyCode.V)/*_playerAction.IsDead()*/)
+        {
+            Time.timeScale = 0;
+            Instantiate(_endCanvas);
+        }  
     }
-
-    //void Loose()
-    //{
-    //    if (_playerAction.IsDead())
-    //        Time.timeScale = 0;
-    //}
 
     private float _spawnX;
     public Vector3 _spawn1 { get; set; }
@@ -46,6 +44,6 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    //Loose();
+	    Loose();
 	}
 }
