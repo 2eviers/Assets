@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 130ed97f8dcd45e4b9ab4e6cb571125a
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PoulpePrefab: {fileID: 100000, guid: a9a03faefe4dc5b4e9a135878dda79fa, type: 2}
+  - PouletPrefab: {fileID: 100000, guid: 782714a05349b6249b9e3e80f237e9d6, type: 2}
+  - DragonPrefab: {fileID: 100000, guid: 2e250bd4c6586324d965ca8643023fd5, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

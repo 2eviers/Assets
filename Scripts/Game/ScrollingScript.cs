@@ -9,12 +9,15 @@ public class ScrollingScript : MonoBehaviour {
 	    _sprite = GetComponent<SpriteRenderer>().sprite;
 	    _size =gameObject.transform.localScale.x*_sprite.bounds.size.x/2;
 	    _instance = true;
+		_gameManager = Camera.main.GetComponent<GameManager> ();
+		Speed = _gameManager.Speed;
 	}
 
     private float _size;
     private Sprite _sprite;
-    public int Speed = 10;
+    public int Speed;
     [SerializeField] private GameObject _prefab;
+	private GameManager _gameManager;
     private bool _instance;
 
     void Movement()

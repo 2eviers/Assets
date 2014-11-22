@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: c736f2e70ed724742a23d8fd168b7e9a
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Fond: {fileID: 100000, guid: 052997a027444cd4f89141c1e1a77b21, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
