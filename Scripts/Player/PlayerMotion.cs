@@ -15,8 +15,6 @@ public class PlayerMotion : MonoBehaviour
 
     private void move()
     {
-        Debug.Log(_target);
-
         if (_target == null) return;
 
         var target = (Vector3) _target;

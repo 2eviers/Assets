@@ -35,7 +35,6 @@ namespace AssemblyCSharp
                 return;
 
             Charge--;
-            UseCompetence();
         }
 
         protected abstract void ActiveCompetence();
