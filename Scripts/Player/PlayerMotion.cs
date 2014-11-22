@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Reflection;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMotion : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerMotion : MonoBehaviour
 
 
     public float Speed;
+    private Vector3 _target;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +16,7 @@ public class PlayerMotion : MonoBehaviour
 
     private void move()
     {
-        
+        if (_target == null) return;
 
     }
 

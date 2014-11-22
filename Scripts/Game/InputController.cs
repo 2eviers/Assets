@@ -9,6 +9,7 @@ public class InputController : MonoBehaviour {
 	void Start ()
 	{
 	    _playerMotion = GetComponent<PlayerMotion>();
+	    _playerAction = GetComponent<PlayerAction>();
         _tete = GetComponent<Tete>();
         _jambeGauche = GetComponent<Jambe>();
         _jambeDroite = GetComponent<Jambe>();
@@ -20,6 +21,7 @@ public class InputController : MonoBehaviour {
 	}
 
     private PlayerMotion _playerMotion;
+    private PlayerAction _playerAction;
     private Tete _tete;
     private Jambe _jambeGauche;
     private Jambe _jambeDroite;
@@ -29,6 +31,8 @@ public class InputController : MonoBehaviour {
     private bool _monsterCollision;
     private bool _scientistCollision;
 
+    private Ennemy _ennemy;
+
     private bool _test;
 
     void OnTriggerEnter(Collider other)
@@ -36,25 +40,33 @@ public class InputController : MonoBehaviour {
         if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
             _scientistCollision = true;
         else _monsterCollision = true;
+        _ennemy = other.gameObject.GetComponent<Ennemy>();
     }
 
     void OnTriggerExit(Collider other)
     {
         _scientistCollision = false;
         _monsterCollision = false;
+        _ennemy = null;
     }
 	
     void Controller()
     {
         if (Input.GetButtonDown("Up")) { _playerMotion.MoveUp(); }
         if (Input.GetButtonDown("Down")) { _playerMotion.MoveDown(); }
-        if (Input.GetButtonDown("Action")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("Action")) { _playerAction.UseCompetence(); }
         if (Input.GetButtonDown("Jump")) { _playerMotion.Jump(); }
     }
 
     void OrgansController()
     {
-        if (Input.GetButtonDown("Head")) { throw new Exception("not implemented"); }
+        if (Input.GetButtonDown("Head"))
+        {
+            //if (_monsterCollision)
+            //{
+            //    _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.);
+            //}
+        }
         if (Input.GetButtonDown("LeftArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("RightArm")) { throw new Exception("not implemented"); }
         if (Input.GetButtonDown("LeftLeg")) { throw new Exception("not implemented"); }
