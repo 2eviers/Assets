@@ -5,13 +5,29 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        _delay = 500;
+	    _activeDelay = false;
 	}
+
+    private int _delay;
+    private bool _activeDelay;
+
+    void Decrement()
+    {
+        if(_delay >= 0 && _activeDelay)
+            _delay--;
+    }
+
+    void StartAudio()
+    {
+        if (_activeDelay)
+            Camera.main.audio.enabled = true;
+    }
 
     public void Begin()
     {
-        Destroy(gameObject);
-        Time.timeScale = 1;
+        _activeDelay = true;
+        
     }
 
     public void Quit()
@@ -25,6 +41,14 @@ public class MenuScript : MonoBehaviour {
     } 
 	// Update is called once per frame
 	void Update () {
-	
+        Debug.Log(_delay);
+        StartAudio();
+	    Decrement();
+        if (_delay == 0)
+        {
+            Time.timeScale = 1;
+            Destroy(gameObject);
+        }
+            
 	}
 }
