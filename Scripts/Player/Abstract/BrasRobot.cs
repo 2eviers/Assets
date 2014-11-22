@@ -4,6 +4,8 @@ using AssemblyCSharp;
 
 public class BrasRobot : Bras {
 	
-	new public int Charge = 0;
+	void Start() {
+		Charge = 0;
+	}
 	
 }

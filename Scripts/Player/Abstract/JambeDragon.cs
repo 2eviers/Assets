@@ -4,6 +4,8 @@ using AssemblyCSharp;
 
 public class JambeDragon : Jambe {
 	
-	new public float SpeedBonus = 8f;
+	void Start() {
+		SpeedBonus = 8f;
+	}
 	
 }
