@@ -8,11 +8,10 @@ public class PlayerMotion : MonoBehaviour
 
     public float Speed;
     private Vector3? _target;
+    private Vector3 _line1;
+    private Vector3 _line2;
+    private Vector3 _line3;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
 
     private void move()
     {
@@ -38,17 +37,36 @@ public class PlayerMotion : MonoBehaviour
 
     public void MoveUp()
     {
-        
+
+        Vector3 target = (_target != null) ? (Vector3) _target : gameObject.transform.position;
+
+        _target = (_line2.z > target.z) ? _line2 : _line1;
+
     }
 
     public void MoveDown()
     {
-        
+        Vector3 target = (_target != null) ? (Vector3)_target : gameObject.transform.position;
+
+        _target = (_line2.z < target.z) ? _line2 : _line3;
     }
 
     public void Jump()
     {
         
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        _line1 = Camera.main.GetComponent<GameManager>()._spawn1;
+        _line2 = Camera.main.GetComponent<GameManager>()._spawn2;
+        _line3 = Camera.main.GetComponent<GameManager>()._spawn3;
+
+        _line1.x = gameObject.transform.position.x;
+        _line2.x = _line1.x;
+        _line3.x = _line1.x;
+
     }
 
 	// Update is called once per frame

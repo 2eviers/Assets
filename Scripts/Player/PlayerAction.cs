@@ -75,12 +75,28 @@ public class PlayerAction : MonoBehaviour
 
     public void UseCompetence()
     {
-
+        Tete.GetComponent<Tete>().UseCompetence();
     }
 
     public bool UseShield()
     {
-        return false;
+        GameObject bras = null;
+
+        if (BrasDroit == null)
+        {
+            bras = BrasGauche;
+            if(bras == null) return false;
+        }
+        else if (BrasGauche == null) return false;
+        else
+            bras = (BrasDroit.GetComponent<AssemblyCSharp.Membre>().Rejet <
+                    BrasGauche.GetComponent<AssemblyCSharp.Membre>().Rejet)
+                ? BrasDroit
+                : BrasGauche;
+
+
+
+        return bras.GetComponent<Bras>().UseShield(); 
     }
 
 

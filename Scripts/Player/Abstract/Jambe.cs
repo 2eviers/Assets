@@ -10,7 +10,6 @@ namespace AssemblyCSharp
     {
         public float SpeedBonus;
 
-        public int Charge;
         void Start()
         {
             Player.GetComponent<PlayerMotion>().Speed += SpeedBonus;
@@ -23,10 +22,6 @@ namespace AssemblyCSharp
 
         }
 
-        public bool UseShield()
-        {
-            return 0 < Charge--;
-        }
 
 
     }

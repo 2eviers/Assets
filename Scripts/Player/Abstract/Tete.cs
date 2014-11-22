@@ -18,7 +18,7 @@ namespace AssemblyCSharp
             return Charge <= 0;
         }
 
-        public void ActiveCompetence()
+        public void UseCompetence()
         {
             
             // si le membre est mort
@@ -38,7 +38,7 @@ namespace AssemblyCSharp
             UseCompetence();
         }
 
-        protected abstract void UseCompetence();
+        protected abstract void ActiveCompetence();
 
 
 
