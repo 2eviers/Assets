@@ -3,12 +3,6 @@ using System.Collections;
 
 public class EnnemyFactory : MonoBehaviour {
 //
-	public float DragonProbability = 0.1f;
-	public float ChickenProbability = 0.3f;
-	public float AlienProbability = 0.1f;
-	public float OctopusProbability = 0.2f;
-	public float RobotProbability = 0.2f;
-	public float TrashProbability = 0.1f;
 	public float SpawnSpeed;
 	public float SpawnX = 10;
 	public float SpawnZ = -1;
@@ -17,6 +11,8 @@ public class EnnemyFactory : MonoBehaviour {
 	public GameObject DragonPrefab;
 	public GameObject RobotPrefab;
 	public GameObject AlienPrefab;
+	public GameObject PoubellePrefab;
+	public GameObject ScDragonPrefab;
 	private int CurrentTime;
 	private Vector3 _spawn;
 	private GameManager _gameManager;
@@ -39,8 +35,10 @@ public class EnnemyFactory : MonoBehaviour {
 						_prefab = PoulpePrefab;
 				else if (r < 80)
 						_prefab = RobotPrefab;
-				else
+				else if (r < 90)
 						_prefab = AlienPrefab;
+				else
+						_prefab = PoubellePrefab;
 
 		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
