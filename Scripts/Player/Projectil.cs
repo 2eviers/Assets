@@ -7,9 +7,16 @@ public class Projectil : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+    public int Speed = 5;
+
+    void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.GetComponent<Ennemy>().Die();
+    }
+
 	// Update is called once per frame
 	void Update () {
-	
+	    transform.Translate(Speed,0,0);
 	}
 }
