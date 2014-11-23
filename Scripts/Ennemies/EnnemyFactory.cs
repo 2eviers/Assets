@@ -4,7 +4,7 @@ using System.Collections;
 
 public class EnnemyFactory : MonoBehaviour {
 //
-	public float SpawnSpeed;
+	public float SpawnSpeed = 1f;
 	public float SpawnX = 10;
 	public float SpawnZ = -1;
 	public GameObject PoulpePrefab;
@@ -22,6 +22,9 @@ public class EnnemyFactory : MonoBehaviour {
 	private Vector3 _spawn;
 	private GameManager _gameManager;
 	private ScrollingScript _scrollingScript;
+	public float LastSpawn;
+	public float LastIncrease = 0f;
+	public float Decrease = 0f;
 
 	void Start() {
 		_gameManager = GetComponent<GameManager> ();
@@ -99,10 +102,16 @@ public class EnnemyFactory : MonoBehaviour {
 	}
 
 	void Update() {
-		if ((int)Time.time != this.CurrentTime) {
-			this.CurrentTime = (int)Time.time;
-			if ((int) (SpawnSpeed * this.CurrentTime) % 60 == 0)
-				this.Spawn();
+		SpawnSpeed = 1f - Decrease;;
+		if (Time.time > SpawnSpeed + LastSpawn) {
+			LastSpawn = Time.time;
+			this.Spawn();
+		}
+
+		if ((Time.time - LastIncrease) > 10) {
+			this.LastIncrease = Time.time;
+			if (Decrease <= 0.7f)
+				Decrease += 0.1f;
 		}
 	}
 	

@@ -39,10 +39,15 @@ public class GameManager : MonoBehaviour
     public Vector3 _spawn2 { get; set; }
     public Vector3 _spawn3 { get; set; }
 	public int Speed;
+	public float LastIncrease = 0f;
 
 	// Update is called once per frame
 	void Update () {
 	    Loose();
 	    NbOrgans = _player.GetComponent<InputController>().NbOrgans;
+		if ((Time.time - LastIncrease) > 12) {
+			this.LastIncrease = Time.time;
+			Speed += 1;
+		}
 	}
 }

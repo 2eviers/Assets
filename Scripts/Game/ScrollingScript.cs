@@ -10,7 +10,6 @@ public class ScrollingScript : MonoBehaviour {
 	    _size =gameObject.transform.localScale.x*_sprite.bounds.size.x/2;
 	    _instance = true;
 		_gameManager = Camera.main.GetComponent<GameManager> ();
-		Speed = _gameManager.Speed;
 	}
 
     private float _size;
@@ -20,8 +19,10 @@ public class ScrollingScript : MonoBehaviour {
 	private GameManager _gameManager;
     private bool _instance;
 
+
     void Movement()
     {
+		Speed = _gameManager.Speed;
         Vector3 movement = new Vector3(-Speed, 0, 0);
         movement *= Time.deltaTime;
         transform.Translate(movement);
