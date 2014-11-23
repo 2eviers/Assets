@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
+    private bool _loose;
 	// Use this for initialization
 	void Start ()
 	{
@@ -11,7 +13,8 @@ public class GameManager : MonoBehaviour {
         _spawn2 = new Vector3(_spawnX, -1.5f, -2);
         _spawn3 = new Vector3(_spawnX, -3, -3);
 		Speed = 10;
-	    _playerAction = _player.GetComponent<PlayerAction>();
+        _playerAction = _player.GetComponent<PlayerAction>();
+        _loose = _playerAction.IsDead();
 	    Time.timeScale = 0;
 	}
 
@@ -22,8 +25,10 @@ public class GameManager : MonoBehaviour {
 
     void Loose()
     {
-        if (Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead())
+
+        if ((Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead())&& !_loose )
         {
+            _loose = true;
             Time.timeScale = 0;
             Instantiate(_endCanvas);
         }  
