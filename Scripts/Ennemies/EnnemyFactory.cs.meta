@@ -10,6 +10,10 @@ MonoImporter:
   - AlienPrefab: {fileID: 100000, guid: 110d8704412cbd94ca8c2a100bcbd34e, type: 2}
   - PoubellePrefab: {fileID: 100000, guid: 172e9403d8854094291e3aeb320aed90, type: 2}
   - ScDragonPrefab: {fileID: 100000, guid: 02379dc85355a89438018e24e1a793ca, type: 2}
+  - ScPoulpePrefab: {fileID: 100000, guid: 14c166edd9658bd45a55ae13ca0cd803, type: 2}
+  - ScPouletPrefab: {fileID: 100000, guid: a66a167b4abc4d94386c52578904f13d, type: 2}
+  - ScRobotPrefab: {fileID: 100000, guid: ea6f2499e3324a6448a40a9b19dd493b, type: 2}
+  - ScAlienPrefab: {fileID: 100000, guid: fdd7f0b025dbaec4f974ff5c914d425e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

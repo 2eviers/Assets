@@ -13,6 +13,10 @@ public class EnnemyFactory : MonoBehaviour {
 	public GameObject AlienPrefab;
 	public GameObject PoubellePrefab;
 	public GameObject ScDragonPrefab;
+	public GameObject ScPoulpePrefab;
+	public GameObject ScPouletPrefab;
+	public GameObject ScRobotPrefab;
+	public GameObject ScAlienPrefab;
 	private int CurrentTime;
 	private Vector3 _spawn;
 	private GameManager _gameManager;
@@ -24,22 +28,33 @@ public class EnnemyFactory : MonoBehaviour {
 
 	GameObject Spawn() {
 	//randomly spawns an ennemy
-		int r = Random.Range (0, 100);
+		int r = Random.Range (0, 126);
 		GameObject _ennemy;
 		GameObject _prefab;
 		if (r < 10)
-						_prefab = DragonPrefab;
-				else if (r < 40)
-						_prefab = PouletPrefab;
-				else if (r < 60)
-						_prefab = PoulpePrefab;
-				else if (r < 80)
-						_prefab = RobotPrefab;
-				else if (r < 90)
-						_prefab = AlienPrefab;
-				else
-						_prefab = PoubellePrefab;
+			_prefab = DragonPrefab;
+		else if (r < 40)
+			_prefab = PouletPrefab;
+		else if (r < 60)
+			_prefab = PoulpePrefab;
+		else if (r < 80)
+			_prefab = RobotPrefab;
+		else if (r < 90)
+			_prefab = AlienPrefab;
+		else if (r < 100)
+			_prefab = PoubellePrefab;
+		else if (r < 105)
+			_prefab = ScDragonPrefab;
+		else if (r < 110)
+			_prefab = ScPoulpePrefab;
+		else if (r < 115)
+			_prefab = ScPouletPrefab;
+		else if (r < 120)
+			_prefab = ScRobotPrefab;
+		else 
+			_prefab = ScAlienPrefab;
 
+	
 		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
 		int p = (int)Random.Range (0, 3);
