@@ -8,7 +8,8 @@ public class PlayerMotion : MonoBehaviour
 
 
     public float Speed;
-    private Vector3? _target;
+    [NonSerialized]
+    public Vector3? Target;
     private Vector3 _line1;
     private Vector3 _line2;
     private Vector3 _line3;
@@ -17,9 +18,9 @@ public class PlayerMotion : MonoBehaviour
 
     private void move()
     {
-        if (_target == null) return;
+        if (Target == null) return;
 
-        var target = (Vector3) _target;
+        var target = (Vector3) Target;
 
 
         Vector3 dirTarget = target - gameObject.transform.position;
@@ -30,7 +31,7 @@ public class PlayerMotion : MonoBehaviour
         if (distanceTarget < pas)
         {
             gameObject.transform.position = target;
-            _target = null;
+            Target = null;
             return;
         }
 
@@ -40,24 +41,24 @@ public class PlayerMotion : MonoBehaviour
     public void MoveUp()
     {
 
-        Vector3 target = (_target != null) ? (Vector3) _target : gameObject.transform.position;
+        Vector3 target = (Target != null) ? (Vector3) Target : gameObject.transform.position;
 
-        _target = (_line2.z > target.z) ? _line2 : _line1;
+        Target = (_line2.z > target.z) ? _line2 : _line1;
 
     }
 
     public void MoveDown()
     {
-        Vector3 target = (_target != null) ? (Vector3)_target : gameObject.transform.position;
+        Vector3 target = (Target != null) ? (Vector3)Target : gameObject.transform.position;
 
-        _target = (_line2.z < target.z) ? _line2 : _line3;
+        Target = (_line2.z < target.z) ? _line2 : _line3;
     }
 
     IEnumerator J()
     {
 		IsJumping = true;
 		Vector3 PlayerPosition = this.gameObject.transform.position;
-		_target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
+		Target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
 		bool CanFly = false;
 		float duration = 0;
@@ -77,7 +78,7 @@ public class PlayerMotion : MonoBehaviour
 		}
 		if (CanFly)
 			yield return new WaitForSeconds(duration);
-		_target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
+		Target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
 		IsJumping = false;
     }

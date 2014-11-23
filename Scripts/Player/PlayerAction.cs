@@ -94,7 +94,7 @@ public class PlayerAction : MonoBehaviour
     public void Arracher()
     {
         killRandomMember();
-        recul();
+        Recul();
         GetComponent<AudioSource>().clip = _arracher;
         GetComponent<AudioSource>().Play();
     }
@@ -130,9 +130,25 @@ public class PlayerAction : MonoBehaviour
     }
 
 
-    private void recul()
+    private void Recul()
     {
-        
+        var motion = gameObject.GetComponent<PlayerMotion>();
+        var target = motion.Target;
+        var position = gameObject.transform.position;
+        if (target != null)
+        {
+            position = (Vector3) target;
+        }
+
+
+        if (position.x > Position2)
+        {
+            motion.Target = position + new Vector3(_pos2-position.x, 0, 0);
+            return;
+        }
+
+        killRandomMember();
+        motion.Target = position + new Vector3(_pos1-position.x, 0, 0);
     }
 
     public bool IsDead()
