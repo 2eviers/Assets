@@ -73,8 +73,8 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
-        //if (_ennemy == null)
-        //    return;
+        if (_ennemy == null)
+            return;
 
 		bool headless = _playerAction.Headless ();
 		String head = headless ? "LeftArm" : "Head";
@@ -134,6 +134,7 @@ public class InputController : MonoBehaviour {
 		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
 		    	Input.GetButtonDown ("RightLeg")) && _monsterCollision && _ennemy.gameObject != null) {
 			_ennemy.Die ();
+			_ennemy = null;
         }
         #endregion
         #region jeter
