@@ -136,7 +136,7 @@ public class PlayerAction : MonoBehaviour
     }
 
 
-    private void Recul()
+    public void Recul()
     {
         var motion = gameObject.GetComponent<PlayerMotion>();
         var target = motion.Target;

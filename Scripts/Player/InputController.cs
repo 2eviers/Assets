@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour {
 
 	    _monsterCollision = false;
 	    _scientistCollision = false;
-
+	    _action = false;
 	}
 
     private PlayerMotion _playerMotion;
@@ -21,6 +21,7 @@ public class InputController : MonoBehaviour {
 
     private bool _monsterCollision;
     private bool _scientistCollision;
+    private bool _action;
 
     private Ennemy _ennemy;
 
@@ -53,6 +54,9 @@ public class InputController : MonoBehaviour {
 		Debug.Log ("exit");
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
+        if(!_action)
+            _playerAction.Recul();
+        _action = false;
 //		other.gameObject.renderer.material.color = Color.green;
 		Debug.Log("Fin de la collision, ennemi meurt.");
 		other.gameObject.renderer.material.color = Color.green;
@@ -76,6 +80,7 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
             {
+                _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
                 NbOrgans++;
             }
@@ -84,6 +89,7 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
             {
+                _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmLeftPrefab);
                 NbOrgans++;
             }
@@ -92,6 +98,7 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
             {
+                _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmRightPrefab);
                 NbOrgans++;
             }
@@ -100,6 +107,7 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
             {
+                _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegLeftPrefab);
                 NbOrgans++;
             }
@@ -108,6 +116,7 @@ public class InputController : MonoBehaviour {
         {
             if (_monsterCollision)
             {
+                _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegRightPrefab);
                 NbOrgans++;
             }
