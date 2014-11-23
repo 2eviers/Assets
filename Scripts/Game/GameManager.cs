@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject _endCanvas;
     [SerializeField] private GameObject _player;
     private PlayerAction _playerAction;
+    public int NbOrgans;
 
     void Loose()
     {
@@ -37,5 +38,6 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    Loose();
+	    NbOrgans = _player.GetComponent<InputController>().NbOrgans;
 	}
 }

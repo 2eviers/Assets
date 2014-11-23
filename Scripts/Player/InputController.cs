@@ -26,6 +26,8 @@ public class InputController : MonoBehaviour {
 
     private bool _test;
 
+    public int NbOrgans = 0;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
@@ -57,35 +59,50 @@ public class InputController : MonoBehaviour {
         if (Input.GetButtonDown("Head"))
         {
             if (_monsterCollision)
+            {
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
+                NbOrgans++;
+            }
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("LeftArm"))
         {
             if (_monsterCollision)
+            {
                 _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmLeftPrefab);
+                NbOrgans++;
+            }
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightArm"))
         {
             if (_monsterCollision)
+            {
                 _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmRightPrefab);
+                NbOrgans++;
+            }
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("LeftLeg"))
         {
             if (_monsterCollision)
+            {
                 _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegLeftPrefab);
+                NbOrgans++;
+            }
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
         if (Input.GetButtonDown("RightLeg"))
         {
             if (_monsterCollision)
+            {
                 _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegRightPrefab);
+                NbOrgans++;
+            }
             if (_scientistCollision)
                 _playerAction.Arracher();
         }

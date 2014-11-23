@@ -12,7 +12,7 @@ public class FinalScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //var time = Math.Round(Time.time, 2);
-        //GetComponent<Text>().text = "Temps : " + time.ToString() +"\n" + "Organes transplantés : " + ;
+        var time = Math.Round(Time.time, 2);
+        GetComponent<Text>().text = "Temps : " + time.ToString() + "\n " + "Organes transplantés : " + Camera.main.GetComponent<GameManager>().NbOrgans.ToString();
 	}
 }
