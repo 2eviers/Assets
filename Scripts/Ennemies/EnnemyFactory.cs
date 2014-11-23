@@ -39,9 +39,9 @@ public class EnnemyFactory : MonoBehaviour {
 			_prefab = PoulpePrefab;
 		else if (r < 80)
 			_prefab = RobotPrefab;
-		else if (r < 90)
+		else //if (r < 90)
 			_prefab = AlienPrefab;
-		else if (r < 100)
+/*		else if (r < 100)
 			_prefab = PoubellePrefab;
 		else if (r < 105)
 			_prefab = ScDragonPrefab;
@@ -53,7 +53,7 @@ public class EnnemyFactory : MonoBehaviour {
 			_prefab = ScRobotPrefab;
 		else 
 			_prefab = ScAlienPrefab;
-
+//*/
 	
 		_ennemy = (GameObject) Instantiate (_prefab); 
 		//randomly determines in which plane the ennemy'll be placed
