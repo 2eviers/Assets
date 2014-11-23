@@ -9,7 +9,7 @@ public class TeteRobot : Tete {
 	
 	protected override void ActiveCompetence() {
 		//on instancie une fulguro tete
-		Vector3 PositionTete = Player.GetComponent<Tete> ().transform.position;
+        Vector3 PositionTete = Player.GetComponent<PlayerAction>().TeteContain.transform.position;
 		PositionTete.x += 2;
 		GameObject Fulgurotete = (GameObject) Instantiate (FulgurotetePrefab);
 		Fulgurotete.transform.position = PositionTete;
