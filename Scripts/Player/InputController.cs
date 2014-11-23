@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour {
 
 	    _monsterCollision = false;
 	    _scientistCollision = false;
+
 	}
 
     private PlayerMotion _playerMotion;

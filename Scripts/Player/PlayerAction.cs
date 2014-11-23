@@ -22,6 +22,9 @@ public class PlayerAction : MonoBehaviour
     public float Position2;
     private float _pos2;
 
+    [SerializeField] private AudioClip _arracher;
+    [SerializeField] private AudioClip _addmembre;
+
     public enum Membre
     {
         Tete,BrasDroit,BrasGauche,JambeGauche,JambeDroite
@@ -29,7 +32,6 @@ public class PlayerAction : MonoBehaviour
 
     public void AddMember(Membre membre, GameObject prefab)
     {
-        Debug.Log(membre);
         switch (membre)
         {
             case Membre.Tete:
@@ -74,6 +76,8 @@ public class PlayerAction : MonoBehaviour
                 JambeDroite.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
         }
+        GetComponent<AudioSource>().clip = _addmembre;
+        GetComponent<AudioSource>().Play();
     }
     /**
      * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
@@ -82,6 +86,8 @@ public class PlayerAction : MonoBehaviour
     {
         killRandomMember();
         recul();
+        GetComponent<AudioSource>().clip = _arracher;
+        GetComponent<AudioSource>().Play();
     }
 
     private void killRandomMember()
