@@ -53,8 +53,6 @@ namespace AssemblyCSharp
             gameObject.GetComponent<Renderer>().material.color = (CurrentRejet / MaxRejet) * color;
 
             Tombe();
-
-
         }
     }
 }
