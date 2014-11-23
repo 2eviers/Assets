@@ -6,7 +6,6 @@ public class TeteDragon : Tete {
 
 	public GameObject FireballPrefab;
 
-	
 	protected override void ActiveCompetence() {
 		//on instancie une boule de feu 
 		Vector3 PositionTete = Player.GetComponent<PlayerAction>().TeteContain.transform.position;
