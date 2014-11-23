@@ -34,11 +34,9 @@ public class InputController : MonoBehaviour {
         if (other.gameObject.GetComponent<Ennemy> ().IsHiddenScientist) {
 			_scientistCollision = true;
 			_playerAction.Arracher();
-			Debug.Log("sci");
 		}
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
-		Debug.Log ("entrée");
 		other.gameObject.renderer.material.color = Color.red;
     }
 
@@ -51,14 +49,12 @@ public class InputController : MonoBehaviour {
     {
         _scientistCollision = false;
         _monsterCollision = false;
-		Debug.Log ("exit");
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
         if(!_action)
             _playerAction.Recul();
         _action = false;
 //		other.gameObject.renderer.material.color = Color.green;
-		Debug.Log("Fin de la collision, ennemi meurt.");
 		other.gameObject.renderer.material.color = Color.green;
 
 //		_ennemy.Die ();
@@ -139,8 +135,7 @@ public class InputController : MonoBehaviour {
 		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
 		    	Input.GetButtonDown ("RightLeg") && _monsterCollision) && _ennemy.gameObject != null) {
 			_ennemy.Die ();
-			Debug.Log("J't'ai tué !");
-                }
+        }
         #endregion
         #region jeter
 
