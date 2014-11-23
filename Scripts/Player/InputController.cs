@@ -79,8 +79,6 @@ public class InputController : MonoBehaviour {
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
                 NbOrgans++;
             }
-            if (_scientistCollision)
-                _playerAction.Arracher();
         }
         else if (Input.GetButtonDown("LeftArm"))
         {
@@ -89,8 +87,6 @@ public class InputController : MonoBehaviour {
                 _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmLeftPrefab);
                 NbOrgans++;
             }
-            if (_scientistCollision)
-                _playerAction.Arracher();
         }
         else if (Input.GetButtonDown("RightArm"))
         {
@@ -99,8 +95,6 @@ public class InputController : MonoBehaviour {
                 _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmRightPrefab);
                 NbOrgans++;
             }
-            if (_scientistCollision)
-                _playerAction.Arracher();
         }
         else if (Input.GetButtonDown("LeftLeg"))
         {
@@ -109,8 +103,6 @@ public class InputController : MonoBehaviour {
                 _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegLeftPrefab);
                 NbOrgans++;
             }
-            if (_scientistCollision)
-                _playerAction.Arracher();
         }
         else if (Input.GetButtonDown("RightLeg"))
         {
@@ -119,8 +111,6 @@ public class InputController : MonoBehaviour {
                 _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegRightPrefab);
                 NbOrgans++;
             }
-            if (_scientistCollision)
-                _playerAction.Arracher();
         }
 
 		if (Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 

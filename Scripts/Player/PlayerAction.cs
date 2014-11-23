@@ -104,7 +104,9 @@ public class PlayerAction : MonoBehaviour
 
         GameObject membre = null;
 
-        while (membre == null)
+        while (membre == null && 
+		       !(Tete == null && BrasDroit == null && BrasGauche == null 
+		  		&& JambeDroite == null && JambeGauche == null))
         {
             switch (UnityEngine.Random.Range(0, 4))
             {
@@ -125,8 +127,8 @@ public class PlayerAction : MonoBehaviour
                     break;
             }
         }
-
-        membre.GetComponent<AssemblyCSharp.Membre>().Detruire();
+		if (membre != null)
+        	membre.GetComponent<AssemblyCSharp.Membre>().Detruire();
     }
 
 
