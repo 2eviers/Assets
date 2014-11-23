@@ -34,15 +34,25 @@ public class InputController : MonoBehaviour {
             _scientistCollision = true;
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
+		Debug.Log ("entrée");
+		other.gameObject.renderer.material.color = Color.red;
     }
+
+	void OnTriggerStay(Collider other)
+	{
+		OrgansController();
+	}
 
     void OnTriggerExit(Collider other)
     {
         _scientistCollision = false;
         _monsterCollision = false;
-		if (_ennemy != null)
-			_ennemy.Die ();
-//        _ennemy = null;
+		Debug.Log ("exit");
+		_ennemy = other.gameObject.GetComponent<Ennemy>();
+		_ennemy.Die ();
+		Debug.Log("Fin de la collision, ennemi meurt.");
+		other.gameObject.renderer.material.color = Color.green;
+
 //		_ennemy.Die ();
     }
 	
@@ -56,6 +66,8 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
+		if (_ennemy == null)
+			return;
         if (Input.GetButtonDown("Head"))
         {
             if (_monsterCollision)
@@ -66,7 +78,7 @@ public class InputController : MonoBehaviour {
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
-        if (Input.GetButtonDown("LeftArm"))
+        else if (Input.GetButtonDown("LeftArm"))
         {
             if (_monsterCollision)
             {
@@ -76,7 +88,7 @@ public class InputController : MonoBehaviour {
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
-        if (Input.GetButtonDown("RightArm"))
+        else if (Input.GetButtonDown("RightArm"))
         {
             if (_monsterCollision)
             {
@@ -86,7 +98,7 @@ public class InputController : MonoBehaviour {
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
-        if (Input.GetButtonDown("LeftLeg"))
+        else if (Input.GetButtonDown("LeftLeg"))
         {
             if (_monsterCollision)
             {
@@ -96,7 +108,7 @@ public class InputController : MonoBehaviour {
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
-        if (Input.GetButtonDown("RightLeg"))
+        else if (Input.GetButtonDown("RightLeg"))
         {
             if (_monsterCollision)
             {
@@ -106,11 +118,17 @@ public class InputController : MonoBehaviour {
             if (_scientistCollision)
                 _playerAction.Arracher();
         }
+
+		if (Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
+		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
+		    	Input.GetButtonDown ("RightLeg") && _monsterCollision && _ennemy.gameObject != null) {
+			_ennemy.Die ();
+			Debug.Log("J't'ai tué !");
+		}
     }
 
 	// Update is called once per frame
 	void Update () {
 	    Controller();
-        OrgansController();
 	}
 }

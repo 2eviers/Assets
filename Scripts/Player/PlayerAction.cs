@@ -33,14 +33,6 @@ public class PlayerAction : MonoBehaviour
 
     public void AddMember(Membre membre, GameObject prefab)
     {
-		try {
-		Ennemy _ennemy = prefab.transform.parent.gameObject.GetComponent<Ennemy>();
-		_ennemy.Die ();
-		}
-		catch (NullReferenceException) {
-			
-		}
-
         switch (membre)
         {
             case Membre.Tete:
