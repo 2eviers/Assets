@@ -1,6 +1,7 @@
 ﻿using AssemblyCSharp;
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerAction : MonoBehaviour
 {
@@ -32,6 +33,14 @@ public class PlayerAction : MonoBehaviour
 
     public void AddMember(Membre membre, GameObject prefab)
     {
+		try {
+		Ennemy _ennemy = prefab.transform.parent.gameObject.GetComponent<Ennemy>();
+		_ennemy.Die ();
+		}
+		catch (NullReferenceException) {
+			
+		}
+
         switch (membre)
         {
             case Membre.Tete:
@@ -97,7 +106,7 @@ public class PlayerAction : MonoBehaviour
 
         while (membre == null)
         {
-            switch (Random.Range(0, 4))
+            switch (UnityEngine.Random.Range(0, 4))
             {
                 case 0:
                     membre = Tete;

@@ -38,7 +38,10 @@ public class InputController : MonoBehaviour {
     {
         _scientistCollision = false;
         _monsterCollision = false;
-        _ennemy = null;
+		if (_ennemy != null)
+			_ennemy.Die ();
+//        _ennemy = null;
+//		_ennemy.Die ();
     }
 	
     void Controller()

@@ -31,7 +31,7 @@ public abstract class Ennemy : MonoBehaviour {
 			Die ();
 	}
 
-	void Die() {
+	public void Die() {
 	//when player successfully steals an organ or ennemy gets out of the screen
 		//death animation
 	//	animation.Play ("die");
