@@ -80,11 +80,19 @@ public class PlayerAction : MonoBehaviour
         GetComponent<AudioSource>().clip = _addmembre;
         GetComponent<AudioSource>().Play();
     }
+
+    public bool IsDead()
+    {
+        return (JambeDroite == null && JambeGauche == null);
+    }
+
+
     /**
      * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
      */
     public void Arracher()
     {
+        if (IsDead()) return;
 		killRandomMember();
 		Recul();
         GetComponent<AudioSource>().clip = _arracher;
@@ -138,7 +146,7 @@ public class PlayerAction : MonoBehaviour
         }
 
 
-        if (position.x > Position2)
+        if (position.x > _pos2)
         {
             motion.Target = position + new Vector3(_pos2-position.x, 0, 0);
             return;
@@ -148,11 +156,7 @@ public class PlayerAction : MonoBehaviour
         motion.Target = position + new Vector3(_pos1-position.x, 0, 0);
     }
 
-    public bool IsDead()
-    {
-        return (JambeDroite == null && JambeGauche == null);
-    }
-
+    
     public void UseCompetence()
     {
         Tete.GetComponent<Tete>().UseCompetence();

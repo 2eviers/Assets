@@ -50,7 +50,7 @@ public class InputController : MonoBehaviour {
         _monsterCollision = false;
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
-		other.gameObject.renderer.material.color = Color.green;
+//		other.gameObject.renderer.material.color = Color.green;
 
 //		_ennemy.Die ();
     }
