@@ -9,6 +9,6 @@ public class JambeHumaine : Jambe {
 	}
 
 	void Update() {
-		//on override l'update de membre car il n'y a pas de rejet pour les membres humains
+		//on override l'update de membre car il n'y a pas de CurrentRejet pour les membres humains
 	}
 }
