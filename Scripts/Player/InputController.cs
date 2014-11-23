@@ -66,8 +66,12 @@ public class InputController : MonoBehaviour {
 	
     void Controller()
     {
-        if (Input.GetButtonDown("Up")){_playerMotion.MoveUp();}
-        if (Input.GetButtonDown("Down")) { _playerMotion.MoveDown(); }
+		bool headless = _playerAction.Headless ();
+		String up = headless ? "Down" : "Up";
+		String down = headless ? "Up" : "Down";
+		
+		if (Input.GetButtonDown(up)){_playerMotion.MoveUp();}
+		if (Input.GetButtonDown(down)) { _playerMotion.MoveDown(); }
         if (Input.GetButtonDown("Action")) { _playerAction.UseCompetence(); }
         if (Input.GetButtonDown("Jump") && !_playerMotion.IsJumping) { _playerMotion.Jump(); }
     }
@@ -76,8 +80,16 @@ public class InputController : MonoBehaviour {
     {
 		if (_ennemy == null)
 			return;
+
+		bool headless = _playerAction.Headless ();
+		String head = headless ? "LeftArm" : "Head";
+		String leftarm = headless ? "LeftLeg" : "LeftArm";
+		String rightarm = headless ? "Head" : "RightArm";
+		String leftleg = headless ? "RightLeg" : "LeftLeg";
+		String rightleg = headless ? "LeftArm" : "RightLeg";
+
         #region AddMember
-        if (Input.GetButtonDown("Head"))
+        if (Input.GetButtonDown(head))
         {
             if (_monsterCollision)
             {
@@ -86,7 +98,7 @@ public class InputController : MonoBehaviour {
                 NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown("LeftArm"))
+        else if (Input.GetButtonDown(leftarm))
         {
             if (_monsterCollision)
             {
@@ -95,7 +107,7 @@ public class InputController : MonoBehaviour {
                 NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown("RightArm"))
+        else if (Input.GetButtonDown(rightarm))
         {
             if (_monsterCollision)
             {
@@ -104,7 +116,7 @@ public class InputController : MonoBehaviour {
                 NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown("LeftLeg"))
+        else if (Input.GetButtonDown(leftleg))
         {
             if (_monsterCollision)
             {
@@ -113,7 +125,7 @@ public class InputController : MonoBehaviour {
                 NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown("RightLeg"))
+        else if (Input.GetButtonDown(rightleg))
         {
             if (_monsterCollision)
             {
@@ -123,9 +135,9 @@ public class InputController : MonoBehaviour {
             }
         }
 
-		if (Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
+		if ((Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
 		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
-		    	Input.GetButtonDown ("RightLeg") && _monsterCollision && _ennemy.gameObject != null) {
+		    	Input.GetButtonDown ("RightLeg") && _monsterCollision) && _ennemy.gameObject != null) {
 			_ennemy.Die ();
 			Debug.Log("J't'ai tué !");
                 }
@@ -134,15 +146,15 @@ public class InputController : MonoBehaviour {
 
         if (!_monsterCollision && !_scientistCollision)
         {
-            if (Input.GetButtonDown("Head"))
+            if (Input.GetButtonDown(head))
                 _playerAction.Jeter(PlayerAction.Membre.Tete);
-            else if (Input.GetButtonDown("LeftArm"))
+            else if (Input.GetButtonDown(leftarm))
                 _playerAction.Jeter(PlayerAction.Membre.BrasGauche);
-            else if (Input.GetButtonDown("RightArm"))
+            else if (Input.GetButtonDown(rightarm))
                 _playerAction.Jeter(PlayerAction.Membre.BrasDroit);
-            else if (Input.GetButtonDown("LeftLeg"))
+            else if (Input.GetButtonDown(leftleg))
                 _playerAction.Jeter(PlayerAction.Membre.JambeGauche);
-            else if (Input.GetButtonDown("RightLeg"))
+            else if (Input.GetButtonDown(rightleg))
                 _playerAction.Jeter(PlayerAction.Membre.JambeDroite);
         }
         #endregion
