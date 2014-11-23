@@ -13,6 +13,7 @@ public class Projectil : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         other.gameObject.GetComponent<Ennemy>().Die();
+        Destroy(gameObject);
     }
 
 	// Update is called once per frame
