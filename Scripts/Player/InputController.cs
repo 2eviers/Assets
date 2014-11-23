@@ -80,6 +80,26 @@ public class InputController : MonoBehaviour {
 		String leftleg = headless ? "RightLeg" : "LeftLeg";
 		String rightleg = headless ? "LeftArm" : "RightLeg";
 
+        #region jeter
+
+        if (!_monsterCollision && !_scientistCollision)
+        {
+            if (Input.GetButtonDown(head))
+                _playerAction.Jeter(PlayerAction.Membre.Tete);
+            else if (Input.GetButtonDown(leftarm))
+                _playerAction.Jeter(PlayerAction.Membre.BrasGauche);
+            else if (Input.GetButtonDown(rightarm))
+                _playerAction.Jeter(PlayerAction.Membre.BrasDroit);
+            else if (Input.GetButtonDown(leftleg))
+                _playerAction.Jeter(PlayerAction.Membre.JambeGauche);
+            else if (Input.GetButtonDown(rightleg))
+                _playerAction.Jeter(PlayerAction.Membre.JambeDroite);
+        }
+        #endregion
+
+        if(_ennemy == null)
+            return;
+
         #region AddMember
         if (Input.GetButtonDown(head))
         {
@@ -134,22 +154,7 @@ public class InputController : MonoBehaviour {
 			_ennemy = null;
         }
         #endregion
-        #region jeter
 
-        if (!_monsterCollision && !_scientistCollision)
-        {
-            if (Input.GetButtonDown(head))
-                _playerAction.Jeter(PlayerAction.Membre.Tete);
-            else if (Input.GetButtonDown(leftarm))
-                _playerAction.Jeter(PlayerAction.Membre.BrasGauche);
-            else if (Input.GetButtonDown(rightarm))
-                _playerAction.Jeter(PlayerAction.Membre.BrasDroit);
-            else if (Input.GetButtonDown(leftleg))
-                _playerAction.Jeter(PlayerAction.Membre.JambeGauche);
-            else if (Input.GetButtonDown(rightleg))
-                _playerAction.Jeter(PlayerAction.Membre.JambeDroite);
-        }
-        #endregion
     }
 
 	// Update is called once per frame
