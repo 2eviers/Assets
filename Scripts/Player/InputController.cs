@@ -33,9 +33,11 @@ public class InputController : MonoBehaviour {
         if (other.gameObject.GetComponent<Ennemy> ().IsHiddenScientist) {
 			_scientistCollision = true;
 			_playerAction.Arracher();
+			Debug.Log("sci");
 		}
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
+		Debug.Log ("entrée");
 		other.gameObject.renderer.material.color = Color.red;
     }
 
@@ -48,9 +50,15 @@ public class InputController : MonoBehaviour {
     {
         _scientistCollision = false;
         _monsterCollision = false;
+		Debug.Log ("exit");
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
+<<<<<<< HEAD
 //		other.gameObject.renderer.material.color = Color.green;
+=======
+		Debug.Log("Fin de la collision, ennemi meurt.");
+		other.gameObject.renderer.material.color = Color.green;
+>>>>>>> origin/master
 
 //		_ennemy.Die ();
     }
