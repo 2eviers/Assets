@@ -92,14 +92,9 @@ public class PlayerAction : MonoBehaviour
      */
     public void Arracher()
     {
-<<<<<<< HEAD
         if (IsDead()) return;
 		killRandomMember();
 		Recul();
-=======
-        killRandomMember();
-        Recul();
->>>>>>> origin/master
         GetComponent<AudioSource>().clip = _arracher;
         GetComponent<AudioSource>().Play();
     }

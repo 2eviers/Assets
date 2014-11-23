@@ -18,16 +18,10 @@ namespace AssemblyCSharp
 
         public override void Detruire()
         {
-<<<<<<< HEAD
 			//Debug.Log (Player.GetComponent<PlayerMotion> ().Speed);
             Player.GetComponent<PlayerMotion>().Speed -= SpeedBonus;
 			//Debug.Log (Player.GetComponent<PlayerMotion> ().Speed);
 			base.Detruire();
-			//Debug.Log (Player.GetComponent<PlayerMotion> ().Speed);
-=======
-            Player.GetComponent<PlayerMotion>().Speed -= SpeedBonus;
-            base.Detruire();
->>>>>>> origin/master
         }
 
 
