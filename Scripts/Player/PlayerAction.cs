@@ -91,6 +91,8 @@ public class PlayerAction : MonoBehaviour
 		return (Tete == null);
 	}
 
+
+
     /**
      * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
      */
@@ -139,6 +141,13 @@ public class PlayerAction : MonoBehaviour
         	membre.GetComponent<AssemblyCSharp.Membre>().Detruire();
     }
 
+
+    public void avance()
+    {
+        var motion = gameObject.GetComponent<PlayerMotion>();
+        var position = gameObject.transform.position;
+        motion.Target = position + new Vector3(_pos1 - position.x, 0, 0);
+    }
 
     public void Recul()
     {
@@ -193,23 +202,48 @@ public class PlayerAction : MonoBehaviour
         switch (membre)
         {
                 case Membre.Tete:
-                Tete.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                if (Tete != null)
+                {
+                    Tete.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                    Tete = null;
+                    avance();
+                }
                 break;
 
                 case  Membre.BrasGauche:
-                BrasGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                if (BrasGauche != null)
+                {
+                    BrasGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                    BrasGauche = null;
+                    avance();
+                }
                 break;
 
                 case Membre.BrasDroit:
-                BrasDroit.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                if (BrasDroit != null)
+                {
+                    BrasDroit.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                    BrasDroit = null;
+                    avance();
+                }
                 break;
 
                 case Membre.JambeGauche:
-                JambeGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                if (JambeGauche != null)
+                {
+                    JambeGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                    JambeGauche = null;
+                    avance();
+                }
                 break;
 
                 case Membre.JambeDroite:
-                JambeDroite.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                if (JambeDroite != null)
+                {
+                    JambeDroite.GetComponent<AssemblyCSharp.Membre>().Jeter();
+                    JambeDroite = null;
+                    avance();
+                }
                 break;
         }
     }
