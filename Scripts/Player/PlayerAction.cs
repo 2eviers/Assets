@@ -92,7 +92,6 @@ public class PlayerAction : MonoBehaviour
      */
     public void Arracher()
     {
-        if (IsDead()) return;
 		killRandomMember();
 		Recul();
         GetComponent<AudioSource>().clip = _arracher;
@@ -108,22 +107,27 @@ public class PlayerAction : MonoBehaviour
 		       !(Tete == null && BrasDroit == null && BrasGauche == null 
 		  		&& JambeDroite == null && JambeGauche == null))
         {
-            switch (UnityEngine.Random.Range(0, 4))
+            switch (UnityEngine.Random.Range(0, 5))
             {
                 case 0:
                     membre = Tete;
+                    Tete = null;
                     break;
                 case 1:
                     membre = BrasDroit;
+                    BrasDroit = null;
                     break;
                 case 2:
                     membre = BrasGauche;
+                    BrasGauche = null;
                     break;
                 case 3:
                     membre = JambeDroite;
+                    JambeDroite = null;
                     break;
                 case 4:
                     membre = JambeGauche;
+                    JambeGauche = null;
                     break;
             }
         }
