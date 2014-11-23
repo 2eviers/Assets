@@ -40,10 +40,6 @@ public class InputController : MonoBehaviour {
 		other.gameObject.renderer.material.color = Color.red;
     }
 
-	void OnTriggerStay(Collider other)
-	{
-		//OrgansController();
-	}
 
     void OnTriggerExit(Collider other)
     {
@@ -74,8 +70,8 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
-		if (_ennemy == null)
-			return;
+        //if (_ennemy == null)
+        //    return;
 
 		bool headless = _playerAction.Headless ();
 		String head = headless ? "LeftArm" : "Head";
@@ -133,7 +129,7 @@ public class InputController : MonoBehaviour {
 
 		if ((Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
 		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
-		    	Input.GetButtonDown ("RightLeg") && _monsterCollision) && _ennemy.gameObject != null) {
+		    	Input.GetButtonDown ("RightLeg")) && _monsterCollision && _ennemy.gameObject != null) {
 			_ennemy.Die ();
         }
         #endregion
