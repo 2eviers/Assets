@@ -6,10 +6,6 @@ public class TeteRobot : Tete {
 
 	public GameObject FulgurotetePrefab;
 
-	void Start() {
-		Cooldown = 0;
-		Charge = 1;
-	}
 	
 	protected override void ActiveCompetence() {
 		//on instancie une fulguro tete

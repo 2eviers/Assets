@@ -4,8 +4,5 @@ using AssemblyCSharp;
 
 public class BrasDragon : Bras {
 	
-	void Start() {
-		Charge = 3;
-	}
 	
 }

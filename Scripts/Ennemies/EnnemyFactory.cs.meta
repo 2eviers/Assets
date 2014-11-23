@@ -8,6 +8,8 @@ MonoImporter:
   - DragonPrefab: {fileID: 100000, guid: 2e250bd4c6586324d965ca8643023fd5, type: 2}
   - RobotPrefab: {fileID: 100000, guid: 8df7d4625bee96a46811b271cbd91426, type: 2}
   - AlienPrefab: {fileID: 100000, guid: 110d8704412cbd94ca8c2a100bcbd34e, type: 2}
+  - PoubellePrefab: {fileID: 100000, guid: 172e9403d8854094291e3aeb320aed90, type: 2}
+  - ScDragonPrefab: {fileID: 100000, guid: 02379dc85355a89438018e24e1a793ca, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

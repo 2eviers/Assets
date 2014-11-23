@@ -4,11 +4,6 @@ using AssemblyCSharp;
 
 public class TeteHumaine : Tete {
 
-	void Start() {
-		Cooldown = 0;
-		Charge = 0;
-	}
-
 	protected override void ActiveCompetence() {
 		return;
 	}
