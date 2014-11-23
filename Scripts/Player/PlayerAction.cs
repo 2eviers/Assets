@@ -11,6 +11,12 @@ public class PlayerAction : MonoBehaviour
     public GameObject JambeDroite;
     public GameObject JambeGauche;
 
+    public GameObject TeteContain;
+    public GameObject BrasDroitContain;
+    public GameObject BrasGaucheContain;
+    public GameObject JambeDroiteContain;
+    public GameObject JambeGaucheContain;
+
     public float Position1;
     private float _pos1;
     public float Position2;
@@ -27,20 +33,37 @@ public class PlayerAction : MonoBehaviour
         switch (membre)
         {
             case Membre.Tete:
-
+                if(Tete != null) Tete.GetComponent<AssemblyCSharp.Membre>().Detruire();
+                Tete = (GameObject) Instantiate(prefab);
+                Tete.transform.parent = TeteContain.transform;
+                Tete.transform.localPosition = Vector3.zero;
                 break;
             case Membre.BrasDroit:
-                BrasDroit = prefab;
+                if (BrasDroit != null) BrasDroit.GetComponent<AssemblyCSharp.Membre>().Detruire();
+                BrasDroit = (GameObject) Instantiate(prefab);
+                BrasDroit.transform.parent = BrasDroitContain.transform;
+                BrasDroit.transform.localPosition = Vector3.zero;
+                BrasDroit.transform.localScale = new Vector3(1, 1, 1);
+                Debug.Log(BrasDroit);
                 break;
 
             case Membre.BrasGauche:
-                BrasGauche = prefab;
+                if (BrasGauche != null) BrasGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
+                BrasGauche = (GameObject)Instantiate(prefab);
+                BrasGauche.transform.parent = BrasGaucheContain.transform;
+                BrasGauche.transform.localPosition = Vector3.zero;
                 break;
             case Membre.JambeDroite:
-
+                if (JambeDroite != null) JambeDroite.GetComponent<AssemblyCSharp.Membre>().Detruire();
+                JambeDroite = (GameObject) Instantiate(prefab);
+                JambeDroite.transform.parent = JambeDroiteContain.transform;
+                JambeDroite.transform.localPosition = Vector3.zero;
                 break;
             case Membre.JambeGauche:
-
+                if (JambeGauche != null) JambeGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
+                JambeGauche = (GameObject) Instantiate(prefab);
+                JambeGauche.transform.parent = JambeGaucheContain.transform;
+                JambeGauche.transform.localPosition = Vector3.zero;
                 break;
         }
     }
@@ -110,8 +133,8 @@ public class PlayerAction : MonoBehaviour
         }
         else if (BrasGauche == null) return false;
         else
-            bras = (BrasDroit.GetComponent<AssemblyCSharp.Membre>().Rejet <
-                    BrasGauche.GetComponent<AssemblyCSharp.Membre>().Rejet)
+            bras = (BrasDroit.GetComponent<AssemblyCSharp.Membre>().CurrentRejet <
+                    BrasGauche.GetComponent<AssemblyCSharp.Membre>().CurrentRejet)
                 ? BrasDroit
                 : BrasGauche;
 

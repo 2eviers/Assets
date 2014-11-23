@@ -14,6 +14,7 @@ public abstract class Ennemy : MonoBehaviour {
     public GameObject LegLeftPrefab;
 
 	void Start () {
+
         transform.Translate(0,gameObject.GetComponent<SpriteRenderer>().bounds.size.y/2,0);
 	}
 

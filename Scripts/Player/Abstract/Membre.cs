@@ -8,13 +8,15 @@ namespace AssemblyCSharp
     public abstract class Membre : MonoBehaviour
 
     {
+        [NonSerialized]
+        public float CurrentRejet;
 
-        public float Rejet;
+        public float MaxRejet;
         public GameObject Player;
 
         public bool IsDead()
         {
-            return Rejet <= 0;
+            return CurrentRejet <= 0;
         }
 
 
@@ -37,9 +39,15 @@ namespace AssemblyCSharp
             Destroy(gameObject);
         }
 
+        void Start()
+        {
+            CurrentRejet = MaxRejet;
+        }
+
         void Update()
         {
-            Rejet -= Time.deltaTime;
+            CurrentRejet -= Time.deltaTime;
+
             Tombe();
         }
     }

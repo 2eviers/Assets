@@ -18,6 +18,6 @@ public class TeteRobot : Tete {
 		GameObject Fulgurotete = (GameObject) Instantiate (FulgurotetePrefab);
 		Fulgurotete.transform.position = PositionTete;
 		//sacrifice de la tete
-		Rejet = 0;
+		CurrentRejet = 0;
 	}
 }
