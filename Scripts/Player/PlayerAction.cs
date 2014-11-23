@@ -86,6 +86,10 @@ public class PlayerAction : MonoBehaviour
         return (JambeDroite == null && JambeGauche == null);
     }
 
+	public bool Headless() 
+	{
+		return (Tete == null);
+	}
 
     /**
      * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
