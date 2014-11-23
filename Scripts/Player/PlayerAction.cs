@@ -22,6 +22,8 @@ public class PlayerAction : MonoBehaviour
     private float _pos1;
     public float Position2;
     private float _pos2;
+    public float Position3;
+    private float _pos3;
 
     [SerializeField] private AudioClip _arracher;
     [SerializeField] private AudioClip _addmembre;
@@ -91,7 +93,15 @@ public class PlayerAction : MonoBehaviour
 		return (Tete == null);
 	}
 
+    public void IsLava()
+    {
+        Vector3 position = gameObject.transform.position;
+        
+        float pas = gameObject.GetComponent<PlayerMotion>().Speed*Time.deltaTime;
 
+        
+        if(Mathf.Abs(_pos3 - position.x) <= pas) avance();
+    }
 
     /**
      * Il faut qu'il existe au moins un membre sur le gameObject sinon boucle
@@ -167,7 +177,7 @@ public class PlayerAction : MonoBehaviour
         }
 
         killRandomMember();
-        motion.Target = position + new Vector3(_pos1-position.x, 0, 0);
+        motion.Target = position + new Vector3(_pos3-position.x, 0, 0);
     }
 
     
@@ -253,6 +263,7 @@ public class PlayerAction : MonoBehaviour
 	{
         _pos1 = -Position1 * Camera.main.aspect * Camera.main.orthographicSize;
         _pos2 = -Position2 * Camera.main.aspect * Camera.main.orthographicSize;
+        _pos3 = -Position3 * Camera.main.aspect * Camera.main.orthographicSize;
 	}
 	
 	// Update is called once per frame

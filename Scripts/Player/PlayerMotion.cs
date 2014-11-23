@@ -36,6 +36,8 @@ public class PlayerMotion : MonoBehaviour
         }
 
         gameObject.transform.Translate(dirTarget.normalized * pas);
+
+        gameObject.GetComponent<PlayerAction>().IsLava();
     }
 
     public void MoveUp()
