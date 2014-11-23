@@ -74,8 +74,8 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
-		if (_ennemy == null)
-			return;
+        //if (_ennemy == null)
+        //    return;
         #region AddMember
         if (Input.GetButtonDown("Head"))
         {
@@ -123,13 +123,14 @@ public class InputController : MonoBehaviour {
             }
         }
 
-		if (Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
+		if ((Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
 		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
-		    	Input.GetButtonDown ("RightLeg") && _monsterCollision && _ennemy.gameObject != null) {
+		    	Input.GetButtonDown ("RightLeg")) && _monsterCollision && _ennemy.gameObject != null) {
 			_ennemy.Die ();
 			Debug.Log("J't'ai tué !");
                 }
         #endregion
+
         #region jeter
 
         if (!_monsterCollision && !_scientistCollision)

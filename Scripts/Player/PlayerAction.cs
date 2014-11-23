@@ -188,7 +188,7 @@ public class PlayerAction : MonoBehaviour
 
     public void Jeter(Membre membre)
     {
-        
+        Debug.Log("bite");
     }
 
     // Use this for initialization
