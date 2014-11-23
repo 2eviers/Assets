@@ -30,8 +30,11 @@ public class InputController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
-            _scientistCollision = true;
+        if (other.gameObject.GetComponent<Ennemy> ().IsHiddenScientist) {
+			_scientistCollision = true;
+			_playerAction.Arracher();
+			Debug.Log("sci");
+		}
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
 		Debug.Log ("entrée");
