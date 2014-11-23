@@ -13,7 +13,7 @@ public class DisplayScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-	    var time = Math.Round(Time.time,2);
+	    var time = Math.Round(Time.timeSinceLevelLoad,2);
 	    GetComponent<Text>().text = "Temps : " + time.ToString();
 	}
 }
