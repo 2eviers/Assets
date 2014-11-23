@@ -38,6 +38,7 @@ public class PlayerAction : MonoBehaviour
                 Tete.transform.parent = TeteContain.transform;
                 Tete.transform.localPosition = Vector3.zero;
                 Tete.transform.localScale = new Vector3(1, 1, 1);
+                Tete.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
             case Membre.BrasDroit:
                 if (BrasDroit != null) BrasDroit.GetComponent<AssemblyCSharp.Membre>().Detruire();
@@ -45,7 +46,7 @@ public class PlayerAction : MonoBehaviour
                 BrasDroit.transform.parent = BrasDroitContain.transform;
                 BrasDroit.transform.localPosition = Vector3.zero;
                 BrasDroit.transform.localScale = new Vector3(1, 1, 1);
-                Debug.Log(BrasDroit);
+                BrasDroit.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
 
             case Membre.BrasGauche:
@@ -54,6 +55,7 @@ public class PlayerAction : MonoBehaviour
                 BrasGauche.transform.parent = BrasGaucheContain.transform;
                 BrasGauche.transform.localPosition = Vector3.zero;
                 BrasGauche.transform.localScale = new Vector3(1, 1, 1);
+                BrasGauche.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
             case Membre.JambeDroite:
                 if (JambeDroite != null) JambeDroite.GetComponent<AssemblyCSharp.Membre>().Detruire();
@@ -61,6 +63,7 @@ public class PlayerAction : MonoBehaviour
                 JambeDroite.transform.parent = JambeDroiteContain.transform;
                 JambeDroite.transform.localPosition = Vector3.zero;
                 JambeDroite.transform.localScale = new Vector3(1, 1, 1);
+                JambeDroite.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
             case Membre.JambeGauche:
                 if (JambeGauche != null) JambeGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
@@ -68,6 +71,7 @@ public class PlayerAction : MonoBehaviour
                 JambeGauche.transform.parent = JambeGaucheContain.transform;
                 JambeGauche.transform.localPosition = Vector3.zero;
                 JambeGauche.transform.localScale = new Vector3(1, 1, 1);
+                JambeDroite.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
         }
     }
