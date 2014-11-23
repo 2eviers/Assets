@@ -73,7 +73,7 @@ public class PlayerAction : MonoBehaviour
                 JambeGauche.transform.parent = JambeGaucheContain.transform;
                 JambeGauche.transform.localPosition = Vector3.zero;
                 JambeGauche.transform.localScale = new Vector3(1, 1, 1);
-                JambeDroite.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+                JambeGauche.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
         }
         GetComponent<AudioSource>().clip = _addmembre;
