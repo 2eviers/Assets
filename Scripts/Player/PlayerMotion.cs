@@ -61,8 +61,8 @@ public class PlayerMotion : MonoBehaviour
 		float duration = 0;
 		//si on a deux ailes de poulet on plane plus longtemps
 		try {
-			Aile aile = this.gameObject.GetComponent<PlayerAction>().BrasDroit.GetComponent<Aile>();
-			Aile aile2 = this.gameObject.GetComponent<PlayerAction>().BrasGauche.GetComponent<Aile>();
+			BrasPoulet aile = this.gameObject.GetComponent<PlayerAction>().BrasDroit.GetComponent<BrasPoulet>();
+			BrasPoulet aile2 = this.gameObject.GetComponent<PlayerAction>().BrasGauche.GetComponent<BrasPoulet>();
 			CanFly = true;
 			duration = aile.FlightDuration;
 			duration = aile2.FlightDuration;
