@@ -6,7 +6,8 @@ public class TetePoulet : Tete {
 	
 	
 	protected override void ActiveCompetence() {
-		if (this.gameObject.audio != null)
-			this.gameObject.audio.Play ();
+        //if (this.gameObject.audio != null)
+        //    this.gameObject.audio.Play ();
+        GetComponent<AudioSource>().Play();
 	}
 }
