@@ -37,6 +37,7 @@ public class PlayerAction : MonoBehaviour
                 Tete = (GameObject) Instantiate(prefab);
                 Tete.transform.parent = TeteContain.transform;
                 Tete.transform.localPosition = Vector3.zero;
+                Tete.transform.localScale = new Vector3(1, 1, 1);
                 break;
             case Membre.BrasDroit:
                 if (BrasDroit != null) BrasDroit.GetComponent<AssemblyCSharp.Membre>().Detruire();
@@ -52,18 +53,21 @@ public class PlayerAction : MonoBehaviour
                 BrasGauche = (GameObject)Instantiate(prefab);
                 BrasGauche.transform.parent = BrasGaucheContain.transform;
                 BrasGauche.transform.localPosition = Vector3.zero;
+                BrasGauche.transform.localScale = new Vector3(1, 1, 1);
                 break;
             case Membre.JambeDroite:
                 if (JambeDroite != null) JambeDroite.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 JambeDroite = (GameObject) Instantiate(prefab);
                 JambeDroite.transform.parent = JambeDroiteContain.transform;
                 JambeDroite.transform.localPosition = Vector3.zero;
+                JambeDroite.transform.localScale = new Vector3(1, 1, 1);
                 break;
             case Membre.JambeGauche:
                 if (JambeGauche != null) JambeGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 JambeGauche = (GameObject) Instantiate(prefab);
                 JambeGauche.transform.parent = JambeGaucheContain.transform;
                 JambeGauche.transform.localPosition = Vector3.zero;
+                JambeGauche.transform.localScale = new Vector3(1, 1, 1);
                 break;
         }
     }
