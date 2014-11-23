@@ -12,15 +12,14 @@ namespace AssemblyCSharp
 
         protected override void Start()
         {
-            base.Start();
             Player.GetComponent<PlayerMotion>().Speed += SpeedBonus;
+            base.Start();
         }
 
         public override void Detruire()
         {
             Player.GetComponent<PlayerMotion>().Speed -= SpeedBonus;
             base.Detruire();
-
         }
 
 
