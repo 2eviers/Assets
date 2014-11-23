@@ -11,6 +11,7 @@ namespace AssemblyCSharp
         [NonSerialized]
         public float CurrentRejet;
 
+        private Color color;
         public float MaxRejet;
         public GameObject Player;
 
@@ -41,6 +42,7 @@ namespace AssemblyCSharp
 
         void Start()
         {
+            color = gameObject.GetComponent<Renderer>().material.color;
             CurrentRejet = MaxRejet;
         }
 
@@ -48,7 +50,11 @@ namespace AssemblyCSharp
         {
             CurrentRejet -= Time.deltaTime;
 
+            gameObject.GetComponent<Renderer>().material.color = (CurrentRejet / MaxRejet) * color;
+
             Tombe();
+
+
         }
     }
 }
