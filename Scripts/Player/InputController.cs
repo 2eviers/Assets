@@ -33,7 +33,10 @@ public class InputController : MonoBehaviour {
     {
         if (other.gameObject.GetComponent<Ennemy> ().IsHiddenScientist) {
 			_scientistCollision = true;
-			_playerAction.Arracher();
+			if(_playerAction.UseShield()) 
+                other.gameObject.GetComponent<Ennemy>().Die(); 
+            else 
+                _playerAction.Arracher();
 		}
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
