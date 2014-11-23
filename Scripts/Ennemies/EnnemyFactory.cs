@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using System.Collections;
 
 public class EnnemyFactory : MonoBehaviour {
@@ -26,36 +27,64 @@ public class EnnemyFactory : MonoBehaviour {
 		_gameManager = GetComponent<GameManager> ();
 	}
 
+    private GameObject RandomPrefab()
+    {
+		int r = Random.Range (0, 126);
+		if (r < 10)
+			return DragonPrefab;
+		else if (r < 40)
+			return PouletPrefab;
+		else if (r < 60)
+			return PoulpePrefab;
+		else if (r < 80)
+			return RobotPrefab;
+		else if (r < 90)
+			return AlienPrefab;
+		else if (r < 100)
+		    return PoubellePrefab;
+		else if (r < 105)
+		    return ScDragonPrefab;
+		else if (r < 110)
+		    return ScPoulpePrefab;
+		else if (r < 115)
+		    return ScPouletPrefab;
+		else if (r < 120)
+		    return ScRobotPrefab;
+		else
+		    return ScAlienPrefab;
+    }
+
 	GameObject Spawn() {
 	//randomly spawns an ennemy
+	    bool isPoubelle = false;
 		int r = Random.Range (0, 126);
 		GameObject _ennemy;
 		GameObject _prefab;
-		if (r < 10)
-			_prefab = DragonPrefab;
-		else if (r < 40)
-			_prefab = PouletPrefab;
-		else if (r < 60)
-			_prefab = PoulpePrefab;
-		else if (r < 80)
-			_prefab = RobotPrefab;
-		else if (r < 90)
-			_prefab = AlienPrefab;
-		else if (r < 100)
-			_prefab = PoubellePrefab;
-		else if (r < 105)
-			_prefab = ScDragonPrefab;
-		else if (r < 110)
-			_prefab = ScPoulpePrefab;
-		else if (r < 115)
-			_prefab = ScPouletPrefab;
-		else if (r < 120)
-			_prefab = ScRobotPrefab;
-		else 
-			_prefab = ScAlienPrefab;
+	    _prefab = RandomPrefab();
 //*/
 	
-		_ennemy = (GameObject) Instantiate (_prefab); 
+		_ennemy = (GameObject) Instantiate (_prefab);
+	    if (_prefab == PoubellePrefab)
+	    {
+            do _prefab = RandomPrefab(); 
+            while (_prefab == PoubellePrefab);
+	        _ennemy.GetComponent<Ennemy>().HeadPrefab = _prefab.GetComponent<Ennemy>().HeadPrefab;
+            do _prefab = RandomPrefab(); 
+            while (_prefab == PoubellePrefab);
+	        _ennemy.GetComponent<Ennemy>().ArmLeftPrefab = _prefab.GetComponent<Ennemy>().ArmLeftPrefab;
+            do _prefab = RandomPrefab(); 
+            while (_prefab == PoubellePrefab);
+	        _ennemy.GetComponent<Ennemy>().ArmRightPrefab = _prefab.GetComponent<Ennemy>().ArmRightPrefab;
+            do _prefab = RandomPrefab(); 
+            while (_prefab == PoubellePrefab);
+	        _ennemy.GetComponent<Ennemy>().LegLeftPrefab = _prefab.GetComponent<Ennemy>().LegLeftPrefab;
+            do _prefab = RandomPrefab(); 
+            while (_prefab == PoubellePrefab);
+	        _ennemy.GetComponent<Ennemy>().LegRightPrefab = _prefab.GetComponent<Ennemy>().LegRightPrefab;
+        }
+
+
+
 		//randomly determines in which plane the ennemy'll be placed
 		int p = (int)Random.Range (0, 3);
 		//all ennemies start at the same (x,z) coordinates but not in the same plane
