@@ -188,7 +188,28 @@ public class PlayerAction : MonoBehaviour
 
     public void Jeter(Membre membre)
     {
-        Debug.Log("bite");
+        switch (membre)
+        {
+                case Membre.Tete:
+                Tete.GetComponent<Tete>().Jeter();
+                break;
+
+                case  Membre.BrasGauche:
+                BrasGauche.GetComponent<Bras>().Jeter();
+                break;
+
+                case Membre.BrasDroit:
+                BrasDroit.GetComponent<Bras>().Jeter();
+                break;
+
+                case Membre.JambeGauche:
+                JambeGauche.GetComponent<Jambe>().Jeter();
+                break;
+
+                case Membre.JambeDroite:
+                JambeDroite.GetComponent<Jambe>().Jeter();
+                break;
+        }
     }
 
     // Use this for initialization
