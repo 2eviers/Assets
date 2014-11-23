@@ -10,8 +10,9 @@ namespace AssemblyCSharp
     {
         public float SpeedBonus;
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             Player.GetComponent<PlayerMotion>().Speed += SpeedBonus;
         }
 

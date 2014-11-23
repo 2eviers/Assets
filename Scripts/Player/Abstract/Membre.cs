@@ -40,7 +40,7 @@ namespace AssemblyCSharp
             Destroy(gameObject);
         }
 
-        void Start()
+        protected virtual void Start()
         {
             color = gameObject.GetComponent<Renderer>().material.color;
             CurrentRejet = MaxRejet;
