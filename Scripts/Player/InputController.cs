@@ -73,9 +73,6 @@ public class InputController : MonoBehaviour {
 
     void OrgansController()
     {
-        if (_ennemy == null)
-            return;
-
 		bool headless = _playerAction.Headless ();
 		String head = headless ? "LeftArm" : "Head";
 		String leftarm = headless ? "LeftLeg" : "LeftArm";
