@@ -71,28 +71,28 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
             
-        if (_delay == 140)
+        if (_delay == 137) //140
         {
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 107)
+        if (_delay == 107) //107
         {
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 75)
+        if (_delay == 72) //75
         {
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 37)
+        if (_delay == 34) //37
         {
             _it.MoveNext();
             var image = _it.Current as Image;
