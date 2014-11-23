@@ -182,6 +182,10 @@ public class PlayerAction : MonoBehaviour
         return bras.GetComponent<Bras>().UseShield(); 
     }
 
+    public void Jeter(Membre membre)
+    {
+        
+    }
 
     // Use this for initialization
 	void Start ()

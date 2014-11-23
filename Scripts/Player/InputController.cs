@@ -44,7 +44,7 @@ public class InputController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		OrgansController();
+		//OrgansController();
 	}
 
     void OnTriggerExit(Collider other)
@@ -76,6 +76,7 @@ public class InputController : MonoBehaviour {
     {
 		if (_ennemy == null)
 			return;
+        #region AddMember
         if (Input.GetButtonDown("Head"))
         {
             if (_monsterCollision)
@@ -127,11 +128,29 @@ public class InputController : MonoBehaviour {
 		    	Input.GetButtonDown ("RightLeg") && _monsterCollision && _ennemy.gameObject != null) {
 			_ennemy.Die ();
 			Debug.Log("J't'ai tué !");
-		}
+                }
+        #endregion
+        #region jeter
+
+        if (!_monsterCollision && !_scientistCollision)
+        {
+            if (Input.GetButtonDown("Head"))
+                _playerAction.Jeter(PlayerAction.Membre.Tete);
+            else if (Input.GetButtonDown("LeftArm"))
+                _playerAction.Jeter(PlayerAction.Membre.BrasGauche);
+            else if (Input.GetButtonDown("RightArm"))
+                _playerAction.Jeter(PlayerAction.Membre.BrasDroit);
+            else if (Input.GetButtonDown("LeftLeg"))
+                _playerAction.Jeter(PlayerAction.Membre.JambeGauche);
+            else if (Input.GetButtonDown("RightLeg"))
+                _playerAction.Jeter(PlayerAction.Membre.JambeDroite);
+        }
+        #endregion
     }
 
 	// Update is called once per frame
 	void Update () {
 	    Controller();
+        OrgansController();
 	}
 }
