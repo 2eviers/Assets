@@ -53,12 +53,9 @@ public class InputController : MonoBehaviour {
 		Debug.Log ("exit");
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
-<<<<<<< HEAD
 //		other.gameObject.renderer.material.color = Color.green;
-=======
 		Debug.Log("Fin de la collision, ennemi meurt.");
 		other.gameObject.renderer.material.color = Color.green;
->>>>>>> origin/master
 
 //		_ennemy.Die ();
     }
