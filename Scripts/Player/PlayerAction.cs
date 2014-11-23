@@ -184,6 +184,7 @@ public class PlayerAction : MonoBehaviour
                 ? BrasDroit
                 : BrasGauche;
 
+        Debug.Log("Protégé");
         return bras.GetComponent<Bras>().UseShield(); 
     }
 
@@ -192,23 +193,23 @@ public class PlayerAction : MonoBehaviour
         switch (membre)
         {
                 case Membre.Tete:
-                Tete.GetComponent<Tete>().Jeter();
+                Tete.GetComponent<AssemblyCSharp.Membre>().Jeter();
                 break;
 
                 case  Membre.BrasGauche:
-                BrasGauche.GetComponent<Bras>().Jeter();
+                BrasGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
                 break;
 
                 case Membre.BrasDroit:
-                BrasDroit.GetComponent<Bras>().Jeter();
+                BrasDroit.GetComponent<AssemblyCSharp.Membre>().Jeter();
                 break;
 
                 case Membre.JambeGauche:
-                JambeGauche.GetComponent<Jambe>().Jeter();
+                JambeGauche.GetComponent<AssemblyCSharp.Membre>().Jeter();
                 break;
 
                 case Membre.JambeDroite:
-                JambeDroite.GetComponent<Jambe>().Jeter();
+                JambeDroite.GetComponent<AssemblyCSharp.Membre>().Jeter();
                 break;
         }
     }

@@ -56,8 +56,6 @@ public class EnnemyFactory : MonoBehaviour {
 
 	GameObject Spawn() {
 	//randomly spawns an ennemy
-	    bool isPoubelle = false;
-		int r = Random.Range (0, 126);
 		GameObject _ennemy;
 		GameObject _prefab;
 	    _prefab = RandomPrefab();
