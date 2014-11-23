@@ -46,7 +46,7 @@ public class InputController : MonoBehaviour {
         if (Input.GetButtonDown("Up")){_playerMotion.MoveUp();}
         if (Input.GetButtonDown("Down")) { _playerMotion.MoveDown(); }
         if (Input.GetButtonDown("Action")) { _playerAction.UseCompetence(); }
-        if (Input.GetButtonDown("Jump")) { _playerMotion.Jump(); }
+        if (Input.GetButtonDown("Jump") && !_playerMotion.IsJumping) { _playerMotion.Jump(); }
     }
 
     void OrgansController()

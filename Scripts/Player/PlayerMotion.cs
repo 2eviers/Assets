@@ -12,6 +12,7 @@ public class PlayerMotion : MonoBehaviour
     private Vector3 _line1;
     private Vector3 _line2;
     private Vector3 _line3;
+	public bool IsJumping;
 
 
     private void move()
@@ -54,6 +55,7 @@ public class PlayerMotion : MonoBehaviour
 
     IEnumerator J()
     {
+		IsJumping = true;
 		Vector3 PlayerPosition = this.gameObject.transform.position;
 		_target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
@@ -67,15 +69,17 @@ public class PlayerMotion : MonoBehaviour
 			duration = aile.FlightDuration;
 			duration = aile2.FlightDuration;
 		}
-		catch (NullReferenceException e) {
-			String b = e.Message;
+		catch (NullReferenceException) {  
 			CanFly = false;
 		}
-		CanFly = true;
+		catch (MissingReferenceException) {
+			CanFly = false;
+		}
 		if (CanFly)
 			yield return new WaitForSeconds(duration);
 		_target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
 		yield return new WaitForSeconds (0.25f);
+		IsJumping = false;
     }
 
 	public void Jump() 
