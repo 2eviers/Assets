@@ -4,8 +4,5 @@ using AssemblyCSharp;
 
 public class JambeTentacule : Jambe {
 
-	void Start() {
-		SpeedBonus = 2f;
-	}
 
 }

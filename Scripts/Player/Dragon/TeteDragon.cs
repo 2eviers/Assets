@@ -6,10 +6,6 @@ public class TeteDragon : Tete {
 
 	public GameObject FireballPrefab;
 
-	void Start() {
-		Cooldown = 5f;
-		Charge = 3;
-	}
 	
 	protected override void ActiveCompetence() {
 		//on instancie une boule de feu 
