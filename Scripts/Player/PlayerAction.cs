@@ -169,6 +169,7 @@ public class PlayerAction : MonoBehaviour
 
     public bool UseShield()
     {
+        Debug.Log("BOUCLIER");
         GameObject bras = null;
 
         if (BrasDroit == null)
