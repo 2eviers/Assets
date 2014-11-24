@@ -35,6 +35,7 @@ public class PlayerMotion : MonoBehaviour
             return;
         }
 
+
         gameObject.transform.Translate(dirTarget.normalized * pas);
 
         gameObject.GetComponent<PlayerAction>().IsLava();
@@ -45,7 +46,11 @@ public class PlayerMotion : MonoBehaviour
 
         Vector3 target = (Target != null) ? (Vector3) Target : gameObject.transform.position;
 
-        Target = (_line2.z > target.z) ? _line2 : _line1;
+        var deplacement = (_line2.z > target.z) ? 
+            new Vector3(0, _line2.y, _line2.z) : 
+            new Vector3(0, _line1.y, _line1.z);
+
+        Target = new Vector3(target.x, deplacement.y, deplacement.z);
 
     }
 
@@ -53,7 +58,12 @@ public class PlayerMotion : MonoBehaviour
     {
         Vector3 target = (Target != null) ? (Vector3)Target : gameObject.transform.position;
 
-        Target = (_line2.z < target.z) ? _line2 : _line3;
+
+        var deplacement = (_line2.z < target.z) ?
+            new Vector3(0, _line2.y, _line2.z) :
+            new Vector3(0, _line3.y, _line3.z);
+
+        Target = new Vector3(target.x, deplacement.y,deplacement.z);
     }
 
     IEnumerator J()

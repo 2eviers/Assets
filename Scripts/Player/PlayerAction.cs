@@ -99,8 +99,13 @@ public class PlayerAction : MonoBehaviour
         
         float pas = gameObject.GetComponent<PlayerMotion>().Speed*Time.deltaTime;
 
-        
-        if(Mathf.Abs(_pos3 - position.x) <= pas) avance();
+
+        if (Mathf.Abs(_pos3 - position.x) <= pas)
+        {
+
+            killRandomMember();
+            avance();
+        }
     }
 
     /**
@@ -176,7 +181,6 @@ public class PlayerAction : MonoBehaviour
             return;
         }
 
-        killRandomMember();
         motion.Target = position + new Vector3(_pos3-position.x, 0, 0);
     }
 

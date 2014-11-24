@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-
+    
     private bool _loose;
 	// Use this for initialization
 	void Start ()

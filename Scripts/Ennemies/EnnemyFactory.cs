@@ -59,6 +59,7 @@ public class EnnemyFactory : MonoBehaviour {
 
 	GameObject Spawn() {
 	//randomly spawns an ennemy
+
 		GameObject _ennemy;
 		GameObject _prefab;
 	    _prefab = RandomPrefab();
