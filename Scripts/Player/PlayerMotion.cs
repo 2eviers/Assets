@@ -16,7 +16,7 @@ public class PlayerMotion : MonoBehaviour
 	public bool IsJumping;
 
 
-    private void move()
+    private void Move()
     {
         if (Target == null) return;
 
@@ -117,6 +117,6 @@ public class PlayerMotion : MonoBehaviour
         _line2.x = _line1.x;
         _line3.x = _line1.x;
 
-	    move();
+	    Move();
 	}
 }
