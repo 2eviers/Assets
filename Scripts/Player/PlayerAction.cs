@@ -192,27 +192,27 @@ public class PlayerAction : MonoBehaviour
 
     public bool UseShield()
     {
-        Debug.Log("BOUCLIER");
-        GameObject bras = null;
-
         if (BrasDroit == null)
         {
-            bras = BrasGauche;
-            if(bras == null) return false;
+            if (BrasGauche == null)
+                return false;
+            return BrasGauche.GetComponent<Bras>().UseShield();
         }
-        else if (BrasGauche == null) return false;
-        else
-            bras = (BrasDroit.GetComponent<AssemblyCSharp.Membre>().CurrentRejet <
-                    BrasGauche.GetComponent<AssemblyCSharp.Membre>().CurrentRejet)
-                ? BrasDroit
-                : BrasGauche;
+        if(BrasGauche == null)
+                return BrasDroit.GetComponent<Bras>().UseShield();
 
-        Debug.Log("Protégé");
-        return bras.GetComponent<Bras>().UseShield(); 
+        var bras1 = BrasDroit.GetComponent<Bras>();
+        var bras2 = BrasGauche.GetComponent<Bras>();
+
+        if (bras1.CurrentRejet < bras2.CurrentRejet)
+            return bras1.UseShield() || bras2.UseShield();
+        else
+            return bras2.UseShield() || bras1.UseShield();
     }
 
     public void Jeter(Membre membre)
     {
+        Debug.Log("Jeter");
         switch (membre)
         {
                 case Membre.Tete:

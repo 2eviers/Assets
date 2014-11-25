@@ -37,6 +37,8 @@ public class InputController : MonoBehaviour {
                 _playerAction.Arracher();
             
             other.gameObject.GetComponent<Ennemy>().Die();
+            _scientistCollision = false;
+
         }
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
@@ -50,6 +52,7 @@ public class InputController : MonoBehaviour {
         _monsterCollision = false;
 		_ennemy = other.gameObject.GetComponent<Ennemy>();
 		_ennemy.Die ();
+        _ennemy = null;
         if(!_action)
             _playerAction.Recul();
         _action = false;
@@ -147,12 +150,14 @@ public class InputController : MonoBehaviour {
             }
         }
 
-		if ((Input.GetButtonDown ("Head") || Input.GetButtonDown ("LeftArm") || 
-		    	Input.GetButtonDown ("RightArm") || Input.GetButtonDown ("LeftLeg") || 
-		    	Input.GetButtonDown ("RightLeg")) && _monsterCollision && _ennemy.gameObject != null) {
+		if (_action)
+		{
+		    _action = false;
 			_ennemy.Die ();
 			_ennemy = null;
-        }
+		    _monsterCollision = false;
+		    _scientistCollision = false;
+		}
         #endregion
 
     }
