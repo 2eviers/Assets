@@ -7,16 +7,21 @@ public class MenuScript : MonoBehaviour {
 	// Use this for initialization
     void Start()
     {
-        _delay = 400;
+        _delay = 0;
         _activeDelay = false;
         _image = GetComponentsInChildren<Image>();
         _it = _image.GetEnumerator();
+
         _it.MoveNext();
         _it.MoveNext();
         _it.MoveNext();
+        _it.MoveNext();
+        //*/
     }
 
-    private int _delay;
+    private float _delay;
+
+    private float fixedTime;
     private bool _activeDelay;
     private Image[] _image;
     private IEnumerator _it;
@@ -24,8 +29,11 @@ public class MenuScript : MonoBehaviour {
 
     void Decrement()
     {
-        if(_delay >= 0 && _activeDelay)
-            _delay--;
+        if (_delay <= 10 && _activeDelay)
+        {
+            fixedTime = Time.fixedDeltaTime * 0.85f;
+            _delay += fixedTime;
+        }
     }
 
     void StartAudio()
@@ -51,49 +59,69 @@ public class MenuScript : MonoBehaviour {
     } 
 	// Update is called once per frame
 	void Update () {
-        if (_delay == 400 && _activeDelay)
+        /*
+        Debug.Log(_delay - 7f);
+        Debug.Log(Time.fixedDeltaTime);
+        Debug.Log(Mathf.Abs(_delay - 7f) <= Time.fixedDeltaTime && _activeDelay);
+        //*/
+
+        if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
         {
+            Debug.Log("Image 1");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
-        if (_delay == 270)
+        if (Mathf.Abs(_delay - 2.175f) <= fixedTime/2f)
         {
+            Debug.Log("Image 2");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 220)
+        if (Mathf.Abs(_delay - 3f) < fixedTime/2f)
         {
-            _it.MoveNext();
-            var image = _it.Current as Image;
-            image.enabled = true;
-        }
-            
-        if (_delay == 137) //140
-        {
+            Debug.Log("Image 3");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 107) //107
+        if (Mathf.Abs(_delay - 4.360f) < fixedTime/2f) //140
         {
+            Debug.Log("Image 4");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 72) //75
+        if (Mathf.Abs(_delay - 4.9f) < fixedTime/2f) //107
         {
+            Debug.Log("Image 5");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
         }
 
-        if (_delay == 34) //37
+        if (Mathf.Abs(_delay - 5.45f) < fixedTime/2f) //75
         {
+            Debug.Log("Image 6");
+            (_it.Current as Image).enabled = false;
+            _it.MoveNext();
+            var image = _it.Current as Image;
+            image.enabled = true;
+        }
+
+        if (Mathf.Abs(_delay - 6f) < fixedTime/2f) //37
+        {
+            Debug.Log("Image 7");
+            (_it.Current as Image).enabled = false;
             _it.MoveNext();
             var image = _it.Current as Image;
             image.enabled = true;
@@ -101,7 +129,7 @@ public class MenuScript : MonoBehaviour {
             
         StartAudio();
 	    Decrement();
-        if (_delay == 0)
+        if (_delay > 6.54f)
         {
             Time.timeScale = 1;
             Destroy(gameObject);
