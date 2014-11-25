@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour {
     private bool _activeDelay;
     private Image[] _image;
     private IEnumerator _it;
-    [SerializeField] private Canvas _score;
+    [SerializeField] private GameObject _score;
 
     void Decrement()
     {
@@ -133,7 +133,7 @@ public class MenuScript : MonoBehaviour {
         {
             Time.timeScale = 1;
             Destroy(gameObject);
-            Instantiate(_score);
+            var UI = (GameObject) Instantiate(_score);
         }
             
 	}

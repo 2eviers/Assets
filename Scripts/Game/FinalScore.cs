@@ -11,8 +11,13 @@ public class FinalScore : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        Score scoreManager = Camera.main.GetComponent<GameManager>().scoreManager;
         var time = Math.Round(Time.timeSinceLevelLoad, 2);
-        GetComponent<Text>().text = "Temps : " + time.ToString() + "\n " + "Organes transplantés : " + Camera.main.GetComponent<GameManager>().NbOrgans.ToString();
+        GetComponent<Text>().text = 
+            "Temps : " + time.ToString() + 
+            "\nOrganes transplantés : " + scoreManager.GetMembres().Count + 
+            "\nScore Final : " + scoreManager.Point();
 	}
 }

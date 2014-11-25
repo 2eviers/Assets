@@ -1,4 +1,5 @@
-﻿using AssemblyCSharp;
+﻿using System.Collections.Generic;
+using AssemblyCSharp;
 using UnityEngine;
 using System.Collections;
 using System;
@@ -33,52 +34,88 @@ public class PlayerAction : MonoBehaviour
         Tete,BrasDroit,BrasGauche,JambeGauche,JambeDroite
     }
 
+    public List<AssemblyCSharp.Membre> GetMembres()
+    {
+        var retMembres = new List<AssemblyCSharp.Membre>();
+
+        if (Tete != null) retMembres.Add(Tete.GetComponent<AssemblyCSharp.Membre>());
+        if (BrasDroit!= null) retMembres.Add(BrasDroit.GetComponent<AssemblyCSharp.Membre>());
+        if (BrasGauche != null) retMembres.Add(BrasGauche.GetComponent<AssemblyCSharp.Membre>());
+        if (JambeDroite!= null) retMembres.Add(JambeDroite.GetComponent<AssemblyCSharp.Membre>());
+        if (JambeGauche!= null) retMembres.Add(JambeGauche.GetComponent<AssemblyCSharp.Membre>());
+
+        return retMembres;
+    } 
+
     public void AddMember(Membre membre, GameObject prefab)
     {
+        GameObject mem = null;
         switch (membre)
         {
             case Membre.Tete:
                 if(Tete != null) Tete.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 Tete = (GameObject) Instantiate(prefab);
                 Tete.transform.parent = TeteContain.transform;
+                mem = Tete;
+                /*
                 Tete.transform.localPosition = Vector3.zero;
                 Tete.transform.localScale = new Vector3(1, 1, 1);
                 Tete.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+                //*/
                 break;
             case Membre.BrasDroit:
                 if (BrasDroit != null) BrasDroit.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 BrasDroit = (GameObject) Instantiate(prefab);
+                mem = BrasDroit;
+
                 BrasDroit.transform.parent = BrasDroitContain.transform;
+                /*
                 BrasDroit.transform.localPosition = Vector3.zero;
                 BrasDroit.transform.localScale = new Vector3(1, 1, 1);
                 BrasDroit.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+                //*/
                 break;
 
             case Membre.BrasGauche:
                 if (BrasGauche != null) BrasGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 BrasGauche = (GameObject)Instantiate(prefab);
+                mem = BrasGauche;
+
                 BrasGauche.transform.parent = BrasGaucheContain.transform;
+                /*
                 BrasGauche.transform.localPosition = Vector3.zero;
                 BrasGauche.transform.localScale = new Vector3(1, 1, 1);
                 BrasGauche.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+                //*/
                 break;
             case Membre.JambeDroite:
                 if (JambeDroite != null) JambeDroite.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 JambeDroite = (GameObject) Instantiate(prefab);
+                mem = JambeDroite;
+
                 JambeDroite.transform.parent = JambeDroiteContain.transform;
+                /*
                 JambeDroite.transform.localPosition = Vector3.zero;
                 JambeDroite.transform.localScale = new Vector3(1, 1, 1);
                 JambeDroite.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+                //*/
                 break;
             case Membre.JambeGauche:
                 if (JambeGauche != null) JambeGauche.GetComponent<AssemblyCSharp.Membre>().Detruire();
                 JambeGauche = (GameObject) Instantiate(prefab);
+                mem = JambeGauche;
                 JambeGauche.transform.parent = JambeGaucheContain.transform;
-                JambeGauche.transform.localPosition = Vector3.zero;
-                JambeGauche.transform.localScale = new Vector3(1, 1, 1);
-                JambeGauche.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
                 break;
         }
+
+        
+        mem.transform.localPosition = Vector3.zero;
+        mem.transform.localScale = new Vector3(1, 1, 1);
+        mem.GetComponent<AssemblyCSharp.Membre>().Player = gameObject;
+
+        Score sMngr = Camera.main.GetComponent<GameManager>().scoreManager;
+        sMngr.AddData(mem.GetComponent<AssemblyCSharp.Membre>());
+
         GetComponent<AudioSource>().clip = _addmembre;
         GetComponent<AudioSource>().Play();
     }
@@ -212,7 +249,6 @@ public class PlayerAction : MonoBehaviour
 
     public void Jeter(Membre membre)
     {
-        Debug.Log("Jeter");
         switch (membre)
         {
                 case Membre.Tete:
