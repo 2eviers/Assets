@@ -11,6 +11,24 @@ public class Score {
     private float _point;
     private float _lastTimeChange;
 
+    readonly List<String> _unit = new List<String>
+        {
+            "PP",
+            "k PP",
+            "M PP",
+            "B PP",
+            "T PP",
+            "q PP",
+            "Q PP",
+            "s PP",
+            "S PP",
+            "O PP",
+            "N PP",
+            "d PP",
+            "U PP",
+            "D PP"
+        };
+
     public Score()
     {
         _point = 0;
@@ -63,23 +81,18 @@ public class Score {
 
     public String PointToString()
     {
-        var unit = new List<string>();
-        unit.Add("PP");
-        unit.Add("k PP"); //1000
-        unit.Add("M PP");
-        unit.Add("B PP");
-        unit.Add("T PP");
-        unit.Add("q PP");
-        unit.Add("Q PP");
-        unit.Add("s PP");
-        unit.Add("S PP");
-        unit.Add("O PP");
-        unit.Add("N PP");
-        unit.Add("d PP");
-        unit.Add("U PP");
-        unit.Add("D PP");
 
+        float point = Point();
 
-        return "";
+        IEnumerator enumerator = _unit.GetEnumerator();
+        enumerator.MoveNext();
+        while (point > 1000 && enumerator.MoveNext())
+        {            
+            point /= 1000;
+        }
+
+        point = Mathf.Round(point*1000)/1000;
+
+        return point + " " + enumerator.Current;
     }
 }

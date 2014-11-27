@@ -18,6 +18,6 @@ public class FinalScore : MonoBehaviour {
         GetComponent<Text>().text = 
             "Temps : " + time.ToString() + 
             "\nOrganes transplantés : " + scoreManager.GetMembres().Count + 
-            "\nScore Final : " + scoreManager.Point();
+            "\nScore Final : " + scoreManager.PointToString();
 	}
 }
