@@ -68,9 +68,12 @@ public class PlayerMotion : MonoBehaviour
 
     IEnumerator J()
     {
-		IsJumping = true;
-		Vector3 PlayerPosition = this.gameObject.transform.position;
-		Target = new Vector3 (PlayerPosition.x, PlayerPosition.y+2, PlayerPosition.z);
+        Vector3 PlayerTarget;
+        if (Target != null) PlayerTarget = (Vector3)Target; 
+        else PlayerTarget = this.gameObject.transform.position;
+
+		//Vector3 PlayerPosition = this.gameObject.transform.position;
+		Target = PlayerTarget + new Vector3 (0, 2, 0);
 		yield return new WaitForSeconds (0.25f);
 		bool CanFly = false;
 		float duration = 0;
@@ -90,14 +93,21 @@ public class PlayerMotion : MonoBehaviour
 		}
 		if (CanFly)
 			yield return new WaitForSeconds(duration);
-		Target = new Vector3(PlayerPosition.x, PlayerPosition.y, PlayerPosition.z);
+
+        var newTarget =(Vector3) (Target ?? gameObject.transform.position);
+        Target = new Vector3(newTarget.x, PlayerTarget.y,newTarget.z);
+
+
 		yield return new WaitForSeconds (0.25f);
-		IsJumping = false;
+
     }
 
 	public void Jump() 
 	{
-		StartCoroutine (J ());
+
+        IsJumping = true;
+        StartCoroutine(J());
+        IsJumping = false;
 	}
 
     // Use this for initialization

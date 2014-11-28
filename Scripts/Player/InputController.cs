@@ -27,39 +27,46 @@ public class InputController : MonoBehaviour {
 
     private bool _test;
 
-    public int NbOrgans = 0;
+    //public int NbOrgans = 0;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Ennemy> ().IsHiddenScientist) {
-			_scientistCollision = true;
+        if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
+        {
+            _scientistCollision = true;
             if (!_playerAction.UseShield())
                 _playerAction.Arracher();
-            
+
             other.gameObject.GetComponent<Ennemy>().Die();
             _scientistCollision = false;
 
         }
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
-		other.gameObject.renderer.material.color = Color.red;
+        other.gameObject.renderer.material.color = Color.red;
     }
 
+    
 
-    void OnTriggerExit(Collider other)
+    public void Exit(Collider other)
     {
         _scientistCollision = false;
         _monsterCollision = false;
-		_ennemy = other.gameObject.GetComponent<Ennemy>();
-		_ennemy.Die ();
+        _ennemy = other.gameObject.GetComponent<Ennemy>();
+        _ennemy.Die();
         _ennemy = null;
-        if(!_action)
+        if (!_action)
             _playerAction.Recul();
         _action = false;
-//		other.gameObject.renderer.material.color = Color.green;
-		other.gameObject.renderer.material.color = Color.green;
+        //		other.gameObject.renderer.material.color = Color.green;
+        other.gameObject.renderer.material.color = Color.green;
 
-//		_ennemy.Die ();
+        //		_ennemy.Die ();
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        Exit(other);
     }
 	
     void Controller()
@@ -110,7 +117,7 @@ public class InputController : MonoBehaviour {
             {
                 _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.Tete, _ennemy.HeadPrefab);
-                NbOrgans++;
+                //NbOrgans++;
             }
         }
         else if (Input.GetButtonDown(leftarm))
@@ -119,7 +126,7 @@ public class InputController : MonoBehaviour {
             {
                 _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.BrasGauche, _ennemy.ArmLeftPrefab);
-                NbOrgans++;
+                //NbOrgans++;
             }
         }
         else if (Input.GetButtonDown(rightarm))
@@ -128,7 +135,7 @@ public class InputController : MonoBehaviour {
             {
                 _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.BrasDroit, _ennemy.ArmRightPrefab);
-                NbOrgans++;
+                //NbOrgans++;
             }
         }
         else if (Input.GetButtonDown(leftleg))
@@ -137,7 +144,7 @@ public class InputController : MonoBehaviour {
             {
                 _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.JambeGauche, _ennemy.LegLeftPrefab);
-                NbOrgans++;
+                //NbOrgans++;
             }
         }
         else if (Input.GetButtonDown(rightleg))
@@ -146,7 +153,7 @@ public class InputController : MonoBehaviour {
             {
                 _action = true;
                 _playerAction.AddMember(PlayerAction.Membre.JambeDroite, _ennemy.LegRightPrefab);
-                NbOrgans++;
+                //NbOrgans++;
             }
         }
 

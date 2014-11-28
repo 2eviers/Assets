@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 	    Loose();
-	    NbOrgans = Player.GetComponent<InputController>().NbOrgans;
+	    //NbOrgans = Player.GetComponent<InputController>().NbOrgans;
 		if ((Time.time - LastIncrease) > 12) {
 			this.LastIncrease = Time.time;
 			Speed += 1;

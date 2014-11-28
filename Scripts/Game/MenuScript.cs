@@ -65,6 +65,7 @@ public class MenuScript : MonoBehaviour {
         Debug.Log(Mathf.Abs(_delay - 7f) <= Time.fixedDeltaTime && _activeDelay);
         //*/
 
+
         if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
         {
             Debug.Log("Image 1");
@@ -129,11 +130,12 @@ public class MenuScript : MonoBehaviour {
             
         StartAudio();
 	    Decrement();
-        if (_delay > 6.54f)
+        if (_delay > 6.54f || (Input.GetKeyDown(KeyCode.Escape) && _activeDelay))
         {
+            //gameManager.enabled = true ???
             Time.timeScale = 1;
             Destroy(gameObject);
-            var UI = (GameObject) Instantiate(_score);
+            Instantiate(_score);
         }
             
 	}
