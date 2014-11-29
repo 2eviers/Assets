@@ -84,25 +84,19 @@ public class InputController : MonoBehaviour {
         {
             if (_isAxisInUse == false)
             {
-
-                
-                // Call your event function here.
                 _isAxisInUse = true;
                 int opp = headless ? -1 : 1;
                 isUp = (opp * Input.GetAxisRaw("Vertical")) > 0;
                 isDown = (opp * Input.GetAxisRaw("Vertical")) < 0;
 
-                Debug.Log(isUp?"Haut":isDown?"Bas":"Bug");
-
             }
         }
         else
             _isAxisInUse = false;
-
+//*/
 
 		if (isUp)_playerMotion.MoveUp();
         if (isDown)_playerMotion.MoveDown();
-		if (Input.GetButtonDown(down))  _playerMotion.MoveDown(); 
         if (Input.GetButtonDown("Action"))  _playerAction.UseCompetence(); 
         if (Input.GetButtonDown("Jump") && !_playerMotion.IsJumping)  _playerMotion.Jump(); 
     }

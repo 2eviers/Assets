@@ -66,11 +66,6 @@ public class MenuScript : MonoBehaviour {
         Debug.Log(Mathf.Abs(_delay - 7f) <= Time.fixedDeltaTime && _activeDelay);
         //*/
 
-	    if (!_activeDelay)
-	    {
-	        if (Input.GetButtonDown("Submit")) Begin();
-	        if (Input.GetButtonDown("Cancel")) Application.Quit();
-	    }
 	    if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
         {
             Debug.Log("Image 1");
@@ -135,7 +130,7 @@ public class MenuScript : MonoBehaviour {
             
         StartAudio();
 	    Decrement();
-        if (_delay > 6.54f || ((Input.GetAxis("Cancel") + Input.GetAxis("Submit")) >0 && _activeDelay))
+        if (_delay > 6.54f || (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Submit")) && _activeDelay)
         {
             //gameManager.enabled = true ???
             Time.timeScale = 1;
@@ -143,6 +138,17 @@ public class MenuScript : MonoBehaviour {
             Instantiate(_score);
             Camera.main.GetComponent<GameManager>().Player.GetComponent<InputController>().enabled = true;
         }
-            
+
+
+
+
+        if (!_activeDelay)
+        {
+            if (Input.GetButtonDown("Submit")) Begin();
+            if (Input.GetButtonDown("Cancel")) Application.Quit();
+        }
+
+
+
 	}
 }
