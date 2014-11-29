@@ -11,7 +11,7 @@ namespace AssemblyCSharp
 
         public bool UseShield()
         {
-            Debug.Log("Nombre de charge : " + Charge);
+            //Debug.Log("Nombre de charge : " + Charge);
             bool test = 0 < Charge;
             Charge --;
             return test;

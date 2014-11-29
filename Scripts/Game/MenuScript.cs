@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -65,8 +66,12 @@ public class MenuScript : MonoBehaviour {
         Debug.Log(Mathf.Abs(_delay - 7f) <= Time.fixedDeltaTime && _activeDelay);
         //*/
 
-
-        if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
+	    if (!_activeDelay)
+	    {
+	        if (Input.GetButtonDown("Submit")) Begin();
+	        if (Input.GetButtonDown("Cancel")) Application.Quit();
+	    }
+	    if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
         {
             Debug.Log("Image 1");
             (_it.Current as Image).enabled = false;
@@ -130,7 +135,7 @@ public class MenuScript : MonoBehaviour {
             
         StartAudio();
 	    Decrement();
-        if (_delay > 6.54f || (Input.GetKeyDown(KeyCode.Escape) && _activeDelay))
+        if (_delay > 6.54f || ((Input.GetAxis("Cancel") + Input.GetAxis("Submit")) >0 && _activeDelay))
         {
             //gameManager.enabled = true ???
             Time.timeScale = 1;

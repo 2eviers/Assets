@@ -59,6 +59,7 @@ namespace AssemblyCSharp
         void Update()
         {
             DurationUpdate();
+
             CurrentRejet -= Time.deltaTime;
 
             gameObject.GetComponent<Renderer>().material.color = (CurrentRejet / MaxRejet) * color;
