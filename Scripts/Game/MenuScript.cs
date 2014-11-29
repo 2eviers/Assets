@@ -136,6 +136,7 @@ public class MenuScript : MonoBehaviour {
             Time.timeScale = 1;
             Destroy(gameObject);
             Instantiate(_score);
+            Camera.main.GetComponent<GameManager>().Player.GetComponent<InputController>().enabled = true;
         }
             
 	}

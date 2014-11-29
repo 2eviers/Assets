@@ -15,6 +15,6 @@ public class DisplayScore : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        gameObject.GetComponent<Text>().text = "Score : " + _gameMngr.scoreManager.PointToString() + "\nMultiplicateur : " + Mathf.Round(_gameMngr.scoreManager.globalMultiplicateur());
+        gameObject.GetComponent<Text>().text = _gameMngr.scoreManager.PointToString() + " : Score\n" + Mathf.Round(_gameMngr.scoreManager.globalMultiplicateur())+ " : Multiplicateur";
 	}
 }
