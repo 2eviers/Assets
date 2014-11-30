@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 11326b23d36623f4daee08f3ff9b1831
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player: {instanceID: 0}
+  - _spriteInactive: {fileID: 21300000, guid: e58213685b8c04d4aa94929d17cb35fb, type: 3}
+  - _spriteActive: {fileID: 21300000, guid: 64d8b3820a1ceb547800a82ab5970edf, type: 3}
+  - FireballPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

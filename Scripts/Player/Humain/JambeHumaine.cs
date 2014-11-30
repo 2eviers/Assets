@@ -5,7 +5,7 @@ using AssemblyCSharp;
 public class JambeHumaine : Jambe {
 
 
-	void Update() {
+	protected override void Update() {
 		//on override l'update de membre car il n'y a pas de CurrentRejet pour les membres humains
         DurationUpdate();
 	}

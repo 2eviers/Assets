@@ -56,7 +56,7 @@ namespace AssemblyCSharp
             TimeDuration += Time.deltaTime;
         }
 
-        void Update()
+		protected virtual void Update()
         {
             DurationUpdate();
 

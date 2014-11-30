@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: ab96f1e73e4885f47b132c489e3ca9f3
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player: {instanceID: 0}
+  - _spriteInactive: {fileID: 21300000, guid: 41ff9b6e26e41d146a080bc7fb3dc3e7, type: 3}
+  - _spriteActive: {fileID: 21300000, guid: c8e1b52a2868e7e4682c99a22e86c0b2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
