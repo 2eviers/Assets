@@ -100,6 +100,7 @@ public class PlayerMotion : MonoBehaviour
 
 		yield return new WaitForSeconds (0.25f);
 
+        IsJumping = false;
     }
 
 	public void Jump() 
@@ -107,7 +108,6 @@ public class PlayerMotion : MonoBehaviour
 
         IsJumping = true;
         StartCoroutine(J());
-        IsJumping = false;
 	}
 
     // Use this for initialization
