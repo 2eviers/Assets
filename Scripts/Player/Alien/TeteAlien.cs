@@ -10,9 +10,9 @@ public class TeteAlien : Tete {
 	}
 
 	IEnumerator AC() {
-		Ennemy[] EnnemyList = (Ennemy[]) Resources.FindObjectsOfTypeAll (typeof(Ennemy));
 		for (int i = 0; i < 10*Cooldown; i++) {
 			yield return new WaitForSeconds (0.1f);
+            Ennemy[] EnnemyList = (Ennemy[])Resources.FindObjectsOfTypeAll(typeof(Ennemy));
 			foreach (Ennemy e in EnnemyList) {
 				if (e.IsHiddenScientist)
 					e.GetComponent<Renderer>().material.color = Color.green;
