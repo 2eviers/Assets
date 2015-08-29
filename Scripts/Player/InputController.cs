@@ -44,7 +44,7 @@ public class InputController : MonoBehaviour {
         }
         else _monsterCollision = true;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
-        other.gameObject.renderer.material.color = Color.red;
+        other.gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 
     
@@ -60,7 +60,7 @@ public class InputController : MonoBehaviour {
             _playerAction.Recul();
         _action = false;
         //		other.gameObject.renderer.material.color = Color.green;
-        other.gameObject.renderer.material.color = Color.green;
+        other.gameObject.GetComponent<Renderer>().material.color = Color.green;
 
         //		_ennemy.Die ();
     }

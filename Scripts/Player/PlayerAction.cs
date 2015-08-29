@@ -224,7 +224,10 @@ public class PlayerAction : MonoBehaviour
     
     public void UseCompetence()
     {
-        Tete.GetComponent<Tete>().UseCompetence();
+        if (Tete != null)
+        {
+            Tete.GetComponent<Tete>().UseCompetence();
+        }
     }
 
     public bool UseShield()

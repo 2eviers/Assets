@@ -15,7 +15,7 @@ public class TeteAlien : Tete {
 			yield return new WaitForSeconds (0.1f);
 			foreach (Ennemy e in EnnemyList) {
 				if (e.IsHiddenScientist)
-					e.renderer.material.color = Color.green;
+					e.GetComponent<Renderer>().material.color = Color.green;
 			}
 		}
 	}

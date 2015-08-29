@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour {
     void StartAudio()
     {
         if (_activeDelay)
-            Camera.main.audio.enabled = true;
+            Camera.main.GetComponent<AudioSource>().enabled = true;
     }
 
     public void Begin()
