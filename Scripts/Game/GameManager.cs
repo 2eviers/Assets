@@ -17,22 +17,28 @@ public class GameManager : MonoBehaviour
         _playerAction = Player.GetComponent<PlayerAction>();
         _loose = _playerAction.IsDead();
 	    Time.timeScale = 0;
+	    _timerDeath = 50;
 	}
 
     [SerializeField] private GameObject _endCanvas;
     [SerializeField] public GameObject Player;
     private PlayerAction _playerAction;
     public int NbOrgans;
+    private int _timerDeath;
 
     void Loose()
     {
+        if (_loose && !(_timerDeath < 0))
+            _timerDeath--;
 
-        if ((Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead())&& !_loose )
+        if ((Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead()) && !_loose)
         {
             _loose = true;
             Time.timeScale = 0;
+        }
+ 
+        if (_timerDeath <= 0)
             Instantiate(_endCanvas);
-        }  
     }
 
     private float _spawnX;
