@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public Score scoreManager;
-    private bool _loose;
+    private bool _lost;
 	// Use this for initialization
 	void Start ()
 	{
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         _spawn3 = new Vector3(_spawnX, -3, -3);
 		Speed = 10;
         _playerAction = Player.GetComponent<PlayerAction>();
-        _loose = _playerAction.IsDead();
+        _lost = _playerAction.IsDead();
 	    Time.timeScale = 0;
 	    _timerDeath = 50;
 	}
@@ -26,18 +26,18 @@ public class GameManager : MonoBehaviour
     public int NbOrgans;
     private int _timerDeath;
 
-    void Loose()
+    void Lose()
     {
-        if (_loose && !(_timerDeath < 0))
+        if (_lost && !(_timerDeath < 0))
             _timerDeath--;
 
-        if ((Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead()) && !_loose)
+        if ((Input.GetKeyDown(KeyCode.V) || _playerAction.IsDead()) && !_lost)
         {
-            _loose = true;
+            _lost = true;
             Time.timeScale = 0;
         }
  
-        if (_timerDeath <= 0)
+        if (_timerDeath == 0)
             Instantiate(_endCanvas);
     }
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-	    Loose();
+	    Lose();
 	    //NbOrgans = Player.GetComponent<InputController>().NbOrgans;
 		if ((Time.time - LastIncrease) > 12) {
 			this.LastIncrease = Time.time;
