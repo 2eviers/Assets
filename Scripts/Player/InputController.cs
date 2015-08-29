@@ -3,10 +3,20 @@ using AssemblyCSharp;
 using UnityEngine;
 using System.Collections;
 
-public class InputController : MonoBehaviour {
+public class InputController : MonoBehaviour
+{
+    #region Injections
+    private PlayerMotion _playerMotion;
+    private PlayerAction _playerAction;
+    #endregion
 
-	// Use this for initialization
-	void Start ()
+    #region Properties
+    [SerializeField]
+    float _delayActionMemberInput = 0.3f;
+    #endregion
+
+    #region Unity
+    void Start ()
 	{
 	    _playerMotion = GetComponent<PlayerMotion>();
 	    _playerAction = GetComponent<PlayerAction>();
@@ -15,20 +25,6 @@ public class InputController : MonoBehaviour {
 	    _scientistCollision = false;
 	    _action = false;
 	}
-
-    private PlayerMotion _playerMotion;
-    private PlayerAction _playerAction;
-
-    private bool _monsterCollision;
-    private bool _scientistCollision;
-    private bool _action;
-
-    private Ennemy _ennemy;
-
-    private bool _test;
-    private bool _isAxisInUse;
-
-    //public int NbOrgans = 0;
 
     void OnTriggerEnter(Collider other)
     {
@@ -47,9 +43,7 @@ public class InputController : MonoBehaviour {
         other.gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 
-    
-
-    public void Exit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         _scientistCollision = false;
         _monsterCollision = false;
@@ -59,51 +53,103 @@ public class InputController : MonoBehaviour {
         if (!_action)
             _playerAction.Recul();
         _action = false;
-        //		other.gameObject.renderer.material.color = Color.green;
+        
         other.gameObject.GetComponent<Renderer>().material.color = Color.green;
-
-        //		_ennemy.Die ();
     }
 
-    void OnTriggerExit(Collider other)
+    void Update()
     {
-        Exit(other);
+        Controller();
+        OrgansController();
     }
+    #endregion
+
+    #region API mobile input
+    public void MobileInput(string button)
+    {
+        switch (button)
+        {
+            case "Up":
+                _mobileUp = true;
+                break;
+            case "Down":
+                _mobileDown = true;
+                break;
+            case "Jump":
+                _mobileJump = true;
+                break;
+            case "Action":
+                _mobileAction = true;
+                break;
+            case "Head":
+                _mobileHead = true;
+                break;
+            case "RightArm":
+                _mobileRightArm = true;
+                break;
+            case "LeftArm":
+                _mobileLeftArm = true;
+                break;
+            case "RightLeg":
+                _mobileRightLeg = true;
+                break;
+            case "LeftLeg":
+                _mobileLeftLeg = true;
+                break;
+        }
+    }
+    #endregion
+
+    #region Private
+    private bool _mobileUp = false;
+    private bool _mobileDown = false;
+    private bool _mobileAction = false;
+    private bool _mobileJump = false;
+
+    private bool _mobileHead = false;
+    private bool _mobileLeftArm = false;
+    private bool _mobileRightArm = false;
+    private bool _mobileLeftLeg = false;
+    private bool _mobileRightLeg = false;
+
+    private bool _monsterCollision;
+    private bool _scientistCollision;
+    private bool _action;
+
+    private Ennemy _ennemy;
+
+    private bool _test;
+    private bool _isAxisInUse;
 	
     void Controller()
     {
 		bool headless = _playerAction.Headless ();
-        String up = headless ? "Down" : "Up";
-		String down = headless ? "Up" : "Down";
 
-        bool isUp = Input.GetButtonDown(up);
-        bool isDown = Input.GetButtonDown(down);
+        bool isUp = InputGetButtonUp(headless);
+        bool isDown = InputGetButtonDown(headless);
 
-
-        if (Input.GetAxisRaw("Vertical") != 0)
+        if (InputGetAxisVertical() != 0)
         {
             if (_isAxisInUse == false)
             {
                 _isAxisInUse = true;
                 int opp = headless ? -1 : 1;
-                isUp = (opp * Input.GetAxisRaw("Vertical")) > 0;
-                isDown = (opp * Input.GetAxisRaw("Vertical")) < 0;
-
+                isUp = (opp * InputGetAxisVertical()) > 0;
+                isDown = (opp * InputGetAxisVertical()) < 0;
             }
         }
         else
             _isAxisInUse = false;
-//*/
 
 		if (isUp)_playerMotion.MoveUp();
         if (isDown)_playerMotion.MoveDown();
-        if (Input.GetButtonDown("Action"))  _playerAction.UseCompetence(); 
-        if (Input.GetButtonDown("Jump") && !_playerMotion.IsJumping)  _playerMotion.Jump(); 
+        if (InputGetButtonAction())  _playerAction.UseCompetence(); 
+        if (InputGetButtonJump() && !_playerMotion.IsJumping)  _playerMotion.Jump(); 
     }
 
     void OrgansController()
     {
-		bool headless = _playerAction.Headless ();
+		bool headless = _playerAction.Headless();
 		String head = headless ? "LeftArm" : "Head";
 		String leftarm = headless ? "LeftLeg" : "LeftArm";
 		String rightarm = headless ? "Head" : "RightArm";
@@ -111,18 +157,17 @@ public class InputController : MonoBehaviour {
 		String rightleg = headless ? "LeftArm" : "RightLeg";
 
         #region jeter
-
         if (!_monsterCollision && !_scientistCollision)
         {
-            if (Input.GetButtonDown(head))
+            if (InputGetButtonHead())
                 _playerAction.Jeter(PlayerAction.Membre.Tete);
-            else if (Input.GetButtonDown(leftarm))
+            else if (InputGetButtonLeftArm())
                 _playerAction.Jeter(PlayerAction.Membre.BrasGauche);
-            else if (Input.GetButtonDown(rightarm))
+            else if (InputGetButtonRightArm())
                 _playerAction.Jeter(PlayerAction.Membre.BrasDroit);
-            else if (Input.GetButtonDown(leftleg))
+            else if (InputGetButtonLeftLeg())
                 _playerAction.Jeter(PlayerAction.Membre.JambeGauche);
-            else if (Input.GetButtonDown(rightleg))
+            else if (InputGetButtonRightLeg())
                 _playerAction.Jeter(PlayerAction.Membre.JambeDroite);
         }
         #endregion
@@ -131,7 +176,7 @@ public class InputController : MonoBehaviour {
             return;
 
         #region AddMember
-        if (Input.GetButtonDown(head))
+        if (InputGetButtonHead())
         {
             if (_monsterCollision)
             {
@@ -140,7 +185,7 @@ public class InputController : MonoBehaviour {
                 //NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown(leftarm))
+        else if (InputGetButtonLeftArm())
         {
             if (_monsterCollision)
             {
@@ -149,7 +194,7 @@ public class InputController : MonoBehaviour {
                 //NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown(rightarm))
+        else if (InputGetButtonRightArm())
         {
             if (_monsterCollision)
             {
@@ -158,7 +203,7 @@ public class InputController : MonoBehaviour {
                 //NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown(leftleg))
+        else if (InputGetButtonLeftLeg())
         {
             if (_monsterCollision)
             {
@@ -167,7 +212,7 @@ public class InputController : MonoBehaviour {
                 //NbOrgans++;
             }
         }
-        else if (Input.GetButtonDown(rightleg))
+        else if (InputGetButtonRightLeg())
         {
             if (_monsterCollision)
             {
@@ -186,12 +231,154 @@ public class InputController : MonoBehaviour {
 		    _scientistCollision = false;
 		}
         #endregion
+    }
+    #endregion
 
+    #region Input
+    bool InputGetButtonDown(bool headless)
+    {
+        String down = headless ? "Up" : "Down";
+        return Input.GetButtonDown(down) || MobileInputGetDown();
     }
 
-	// Update is called once per frame
-	void Update () {
-	    Controller();
-        OrgansController();
-	}
+    bool InputGetButtonUp(bool headless)
+    {
+        String up = headless ? "Down" : "Up";
+        return Input.GetButtonDown(up) || MobileInputGetUp();
+    }
+
+    float InputGetAxisVertical()
+    {
+        return Input.GetAxisRaw("Vertical");
+    }
+
+    bool InputGetButtonAction()
+    {
+        return Input.GetButtonDown("Action");
+    }
+
+    bool InputGetButtonJump()
+    {
+        return Input.GetButtonDown("Jump");
+    }
+
+    bool InputGetButtonHead()
+    {
+        return Input.GetButtonDown("Head") || MobileInputGetHead();
+    }
+
+    bool InputGetButtonRightArm()
+    {
+        return Input.GetButtonDown("RightArm") || MobileInputGetRightArm();
+    }
+
+    bool InputGetButtonLeftArm()
+    {
+        return Input.GetButtonDown("LeftArm") || MobileInputGetLeftArm();
+    }
+
+    bool InputGetButtonRightLeg()
+    {
+        return Input.GetButtonDown("RightLeg") || MobileInputGetRightLeg();
+    }
+
+    bool InputGetButtonLeftLeg()
+    {
+        return Input.GetButtonDown("LeftLeg") || MobileInputGetLeftLeg();
+    }
+    #endregion
+
+    #region Mobile Input
+    bool MobileInputGetUp()
+    {
+        if (_mobileUp)
+        {
+            _mobileUp = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetDown()
+    {
+        if (_mobileDown)
+        {
+            _mobileDown = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetAction()
+    {
+        if (_mobileAction)
+        {
+            _mobileAction = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetJump()
+    {
+        if (_mobileJump)
+        {
+            _mobileJump = false;
+            return true;
+        }
+        return false;
+    }
+    #endregion
+
+    #region API mobile organs input
+    bool MobileInputGetHead()
+    {
+        if (_mobileHead)
+        {
+            _mobileHead = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetRightArm()
+    {
+        if (_mobileRightArm)
+        {
+            _mobileRightArm = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetLeftArm()
+    {
+        if (_mobileLeftArm)
+        {
+            _mobileLeftArm = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetRightLeg()
+    {
+        if (_mobileRightLeg)
+        {
+            _mobileRightLeg = false;
+            return true;
+        }
+        return false;
+    }
+
+    bool MobileInputGetLeftLeg()
+    {
+        if (_mobileLeftLeg)
+        {
+            _mobileLeftLeg = false;
+            return true;
+        }
+        return false;
+    }
+    #endregion
 }
