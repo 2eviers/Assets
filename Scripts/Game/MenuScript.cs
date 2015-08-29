@@ -3,50 +3,17 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class MenuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour 
+{    
+    #region Properties
+    [SerializeField] 
+    private GameObject _scorePrefab;
+    #endregion
 
-	// Use this for initialization
-    void Start()
-    {
-        _delay = 0;
-        _activeDelay = false;
-        _image = GetComponentsInChildren<Image>();
-        _it = _image.GetEnumerator();
-
-        _it.MoveNext();
-        _it.MoveNext();
-        _it.MoveNext();
-        _it.MoveNext();
-        //*/
-    }
-
-    private float _delay;
-
-    private float fixedTime;
-    private bool _activeDelay;
-    private Image[] _image;
-    private IEnumerator _it;
-    [SerializeField] private GameObject _score;
-
-    void Decrement()
-    {
-        if (_delay <= 10 && _activeDelay)
-        {
-            fixedTime = Time.fixedDeltaTime * 0.85f;
-            _delay += fixedTime;
-        }
-    }
-
-    void StartAudio()
-    {
-        if (_activeDelay)
-            Camera.main.GetComponent<AudioSource>().enabled = true;
-    }
-
+    #region API
     public void Begin()
     {
-        _activeDelay = true;
-        
+        _gameStarted = true;
     }
 
     public void Quit()
@@ -57,16 +24,51 @@ public class MenuScript : MonoBehaviour {
     public void Return()
     {
         Application.LoadLevel(0);
-    } 
-	// Update is called once per frame
-	void Update () {
-        /*
-        Debug.Log(_delay - 7f);
-        Debug.Log(Time.fixedDeltaTime);
-        Debug.Log(Mathf.Abs(_delay - 7f) <= Time.fixedDeltaTime && _activeDelay);
-        //*/
+    }
+    #endregion
 
-	    if (Mathf.Abs(_delay - 0.02f) <= fixedTime/2f && _activeDelay)
+    #region Unity
+    void Start()
+    {
+        _timeElapsed = 0;
+        _gameStarted = false;
+        _image = GetComponentsInChildren<Image>();
+        _it = _image.GetEnumerator();
+
+        _it.MoveNext();
+        _it.MoveNext();
+        _it.MoveNext();
+        _it.MoveNext();
+    }
+
+    void Update () 
+    {
+        ShowIntro();        
+        StartAudio();
+	    Decrement();
+
+        if (_timeElapsed > 6.54f || (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Submit")) && _gameStarted)
+        {
+            StartGame();
+        }
+
+        if (!_gameStarted)
+        {
+            GetInput();
+        }
+	}
+    #endregion
+
+    #region Private
+    private float _timeElapsed;
+    private float fixedTime;
+    private bool _gameStarted;
+    private Image[] _image;
+    private IEnumerator _it;
+
+    void ShowIntro()
+    {
+        if (Mathf.Abs(_timeElapsed - 0.02f) <= fixedTime / 2f && _gameStarted)
         {
             Debug.Log("Image 1");
             (_it.Current as Image).enabled = false;
@@ -74,7 +76,7 @@ public class MenuScript : MonoBehaviour {
             var image = _it.Current as Image;
             image.enabled = true;
         }
-        if (Mathf.Abs(_delay - 2.175f) <= fixedTime/2f)
+        if (Mathf.Abs(_timeElapsed - 2.175f) <= fixedTime / 2f)
         {
             Debug.Log("Image 2");
             (_it.Current as Image).enabled = false;
@@ -83,7 +85,7 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
 
-        if (Mathf.Abs(_delay - 3f) < fixedTime/2f)
+        if (Mathf.Abs(_timeElapsed - 3f) < fixedTime / 2f)
         {
             Debug.Log("Image 3");
             (_it.Current as Image).enabled = false;
@@ -92,7 +94,7 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
 
-        if (Mathf.Abs(_delay - 4.360f) < fixedTime/2f) //140
+        if (Mathf.Abs(_timeElapsed - 4.360f) < fixedTime / 2f) //140
         {
             Debug.Log("Image 4");
             (_it.Current as Image).enabled = false;
@@ -101,7 +103,7 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
 
-        if (Mathf.Abs(_delay - 4.9f) < fixedTime/2f) //107
+        if (Mathf.Abs(_timeElapsed - 4.9f) < fixedTime / 2f) //107
         {
             Debug.Log("Image 5");
             (_it.Current as Image).enabled = false;
@@ -110,7 +112,7 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
 
-        if (Mathf.Abs(_delay - 5.45f) < fixedTime/2f) //75
+        if (Mathf.Abs(_timeElapsed - 5.45f) < fixedTime / 2f) //75
         {
             Debug.Log("Image 6");
             (_it.Current as Image).enabled = false;
@@ -119,7 +121,7 @@ public class MenuScript : MonoBehaviour {
             image.enabled = true;
         }
 
-        if (Mathf.Abs(_delay - 6f) < fixedTime/2f) //37
+        if (Mathf.Abs(_timeElapsed - 6f) < fixedTime / 2f) //37
         {
             Debug.Log("Image 7");
             (_it.Current as Image).enabled = false;
@@ -127,28 +129,42 @@ public class MenuScript : MonoBehaviour {
             var image = _it.Current as Image;
             image.enabled = true;
         }
-            
-        StartAudio();
-	    Decrement();
-        if (_delay > 6.54f || (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Submit")) && _activeDelay)
+    }
+
+    void Decrement()
+    {
+        if (_timeElapsed <= 10 && _gameStarted)
         {
-            //gameManager.enabled = true ???
-            Time.timeScale = 1;
-            Destroy(gameObject);
-            Instantiate(_score);
-            Camera.main.GetComponent<GameManager>().Player.GetComponent<InputController>().enabled = true;
+            fixedTime = Time.fixedDeltaTime * 0.85f;
+            _timeElapsed += fixedTime;
+        }
+    }
+
+    void StartAudio()
+    {
+        if (_gameStarted)
+            Camera.main.GetComponent<AudioSource>().enabled = true;
+    }
+
+    void StartGame()
+    {
+        Time.timeScale = 1;
+        Destroy(gameObject);
+        Instantiate(_scorePrefab);
+        Camera.main.GetComponent<GameManager>().Player.GetComponent<InputController>().enabled = true;
+    }
+
+    void GetInput()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            Begin();
         }
 
-
-
-
-        if (!_activeDelay)
+        if (Input.GetButtonDown("Cancel"))
         {
-            if (Input.GetButtonDown("Submit")) Begin();
-            if (Input.GetButtonDown("Cancel")) Application.Quit();
+            Application.Quit();
         }
-
-
-
-	}
+    }
+    #endregion
 }
