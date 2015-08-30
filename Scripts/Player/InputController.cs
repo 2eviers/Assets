@@ -240,6 +240,7 @@ public class InputController : MonoBehaviour
 			_ennemy = null;
 		    _monsterCollision = false;
 		    _scientistCollision = false;
+            onCollision.Invoke(false);
 		}
         #endregion
     }
