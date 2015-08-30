@@ -1,6 +1,7 @@
 ﻿using System;
 using AssemblyCSharp;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class InputController : MonoBehaviour
@@ -14,6 +15,10 @@ public class InputController : MonoBehaviour
     [SerializeField]
     float _delayActionMemberInput = 0.3f;
     #endregion
+    
+    #region Events
+    public Engine.TypedUnityEvents.BoolEvent onCollision = new Engine.TypedUnityEvents.BoolEvent();
+    #endregion
 
     #region Unity
     void Start ()
@@ -24,10 +29,14 @@ public class InputController : MonoBehaviour
 	    _monsterCollision = false;
 	    _scientistCollision = false;
 	    _action = false;
+
+        onCollision.Invoke(false);
 	}
 
     void OnTriggerEnter(Collider other)
     {
+        onCollision.Invoke(true);
+
         if (other.gameObject.GetComponent<Ennemy>().IsHiddenScientist)
         {
             _scientistCollision = true;
@@ -45,6 +54,8 @@ public class InputController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        onCollision.Invoke(false);
+
         _scientistCollision = false;
         _monsterCollision = false;
         _ennemy = other.gameObject.GetComponent<Ennemy>();
@@ -254,7 +265,7 @@ public class InputController : MonoBehaviour
 
     bool InputGetButtonAction()
     {
-        return Input.GetButtonDown("Action");
+        return Input.GetButtonDown("Action") || MobileInputGetAction();
     }
 
     bool InputGetButtonJump()

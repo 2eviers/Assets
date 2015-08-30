@@ -151,7 +151,9 @@ public class MenuScript : MonoBehaviour
         Time.timeScale = 1;
         Destroy(gameObject);
         Instantiate(_scorePrefab);
-        Camera.main.GetComponent<GameManager>().Player.GetComponent<InputController>().enabled = true;
+        GameManager _gameManager = Camera.main.GetComponent<GameManager>();
+        _gameManager.StartGame();
+        _gameManager.Player.GetComponent<InputController>().enabled = true;
     }
 
     void GetInput()

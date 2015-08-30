@@ -1,11 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public Score scoreManager;
     private bool _lost;
-	// Use this for initialization
+
+    #region Events
+    public UnityEvent onStartGame = new UnityEvent();
+    public UnityEvent onEndGame = new UnityEvent();
+    #endregion
+
+    #region API
+    public void StartGame()
+    {
+        onStartGame.Invoke();
+    }
+    #endregion
+
+    // Use this for initialization
 	void Start ()
 	{
 	    scoreManager = new Score();
@@ -35,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             _lost = true;
             Time.timeScale = 0;
+            onEndGame.Invoke();
         }
  
         if (_timerDeath == 0)
