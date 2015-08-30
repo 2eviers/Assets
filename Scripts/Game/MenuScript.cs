@@ -8,12 +8,15 @@ public class MenuScript : MonoBehaviour
     #region Properties
     [SerializeField] 
     private GameObject _scorePrefab;
+    [SerializeField]
+    private GameObject _skipIntroButton = null;
     #endregion
 
     #region API
     public void Begin()
     {
         _gameStarted = true;
+        _skipIntroButton.gameObject.SetActive(true);
     }
 
     public void Quit()
@@ -24,6 +27,11 @@ public class MenuScript : MonoBehaviour
     public void Return()
     {
         Application.LoadLevel(0);
+    }
+
+    public void SkipIntro()
+    {
+        _timeElapsed = 6.54f;
     }
     #endregion
 
@@ -39,6 +47,8 @@ public class MenuScript : MonoBehaviour
         _it.MoveNext();
         _it.MoveNext();
         _it.MoveNext();
+
+        _skipIntroButton.gameObject.SetActive(false);
     }
 
     void Update () 
